@@ -11,7 +11,7 @@ Specs:
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [x] Include signup
 - [x] Include login
-- [ ] Include logout
+- [x] Include logout
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
 - [ ] Include nested resource show or index (URL e.g. users/2/recipes)
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)

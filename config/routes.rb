@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
   resources :programs
+  post 'programs/new', to: "programs#create"
 end

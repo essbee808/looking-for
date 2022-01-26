@@ -7,8 +7,15 @@ class ProgramsController < ApplicationController
     end
 
     def create
-        @program = Program.new(program_params)
-        binding.pry
+        #binding.pry
+        @program = Program.new(name: params[:name], website: params[:website], description: params[:description])
+        @program.user_id = current_user.id
+       
+        if @program.save
+          redirect_to program_path(@program)
+        else
+          render :new
+        end
     end
 
     def edit
@@ -17,13 +24,14 @@ class ProgramsController < ApplicationController
     def update
     end
 
+    def show
+        @program =  Program.find_by(id: params[:id])
+    end
+
+
     def destroy
     end
 
-    private
-
-    def program_params
-        params.require(:program).permit(:name, :description, :website)
-    end
+   
 end
 

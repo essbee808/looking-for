@@ -13,6 +13,7 @@
   <body>
     <h1>Welcome to Looking For!</h1>
     <%= yield %>
+    <br>
     <% if user_signed_in? %>
       You are signed in as <%= current_user.email %><br>
      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>

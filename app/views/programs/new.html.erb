@@ -1,5 +1,5 @@
 <h2>Add A Program</h2>
-<%= form_with model: @program do |f| %>
+<%= form_with model: @program, local: true do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
     <br>
