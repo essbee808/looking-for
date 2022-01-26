@@ -7,6 +7,8 @@ class ProgramsController < ApplicationController
     end
 
     def create
+        @program = Program.new(program_params)
+        binding.pry
     end
 
     def edit
