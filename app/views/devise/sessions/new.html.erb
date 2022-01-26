@@ -26,4 +26,4 @@
 <%= render "devise/shared/links" %>
 
 <h3>Or Login with Google:</h3>
-<%= button_to "Google", user_google_oauth2_omniauth_authorize_path %>
+<%= button_to "Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
