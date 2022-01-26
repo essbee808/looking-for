@@ -12,11 +12,13 @@ class Users::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
+  def home
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # protected
 
@@ -25,6 +27,5 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  def home
-  end
+ 
 end
