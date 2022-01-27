@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'organizations/new'
+  get 'organizations/edit'
+  get 'organizations/index'
   root to: "programs#index"
 
   devise_for :users, controllers: {
