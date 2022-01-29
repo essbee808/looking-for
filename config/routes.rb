@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   resources :categories do
     resources :programs
   end
-  resources :organizations
+  
 end

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-    helper_method :created_categories
 
     # def created_categories
     #     @categories = []
