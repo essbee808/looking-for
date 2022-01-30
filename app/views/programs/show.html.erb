@@ -1,7 +1,11 @@
+<% if @program %>
 <h2><%= @program.name %></h2>
 <h4><%= @program.description %></h4>
 <h4><%= link_to @program.website, target: :_blank %></h4>
 <p>Added by <%= @program.user.name %></p>
 <br>
-<%= link_to 'All Programs', programs_path %><br>
+<% else %>
+    <p>Oops! We don't know what you're looking for.</p>
+<% end %>
+<%= link_to 'View All Programs', programs_path %><br>
 <br>

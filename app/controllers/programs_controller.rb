@@ -21,6 +21,7 @@ class ProgramsController < ApplicationController
     end
 
     def edit
+      @program = Program.find_by(id: params[:id])
     end
 
     def update
