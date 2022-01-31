@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "categories#index"
 
+  get 'programs/:id/edit', to: 'programs#edit', as: 'edit_program'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations', 
     sessions: 'users/sessions',
