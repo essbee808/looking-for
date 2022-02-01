@@ -9,9 +9,9 @@ class ProgramsController < ApplicationController
 
     def create
         #binding.pry
-        @program = Program.new(name: params[:name], website: params[:website], description: params[:description])
+        @program = Program.new(program_params)
         @program.creator_id = current_user.id
-       
+        binding.pry
         if @program.save
           redirect_to program_path(@program)
         else
@@ -35,6 +35,11 @@ class ProgramsController < ApplicationController
     def destroy
     end
 
-   
+    private
+
+    def program_params
+      params.require(:program).permit(:name, :website, :description, :creator_id)
+    end
+
 end
 

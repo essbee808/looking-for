@@ -5,7 +5,8 @@
 <p>Added by <%= @program.user.name %></p>
 <br>
 <% else %>
-    <p>Oops! We don't know what you're looking for.</p>
+    <p>Oops! Looks like that program doesn't exist.</p>
 <% end %>
+<%= link_to 'Add A Program', new_program_path %><br>
 <%= link_to 'View All Programs', programs_path %><br>
 <br>
