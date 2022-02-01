@@ -1,2 +1,9 @@
 <h1>Categories#new</h1>
 <p>Find me in app/views/categories/new.html.erb</p>
+
+<%= form_with model: @category do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <br>
+    <%= f.submit %> 
+<% end %> 
