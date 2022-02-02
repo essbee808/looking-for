@@ -1,7 +1,3 @@
 <h1><%= @category.name %></h1>
-<p>Find me in app/views/categories/show.html.erb</p>
-
-<% if !@category.programs.nil? %>
-    <% @programs.each do |f| %>
-    <%= 
-<% end %>
+<%= link_to 'Add A Program', new_category_program_path %>
+<br>
