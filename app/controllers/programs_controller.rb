@@ -1,5 +1,6 @@
 class ProgramsController < ApplicationController
     before_action :authenticate_user!, :except => [:index]
+    before_action :set_program, only: [:show, :edit, :update, :destroy]
     def index
         @programs = Program.all
     end
@@ -20,7 +21,6 @@ class ProgramsController < ApplicationController
     end
 
     def edit
-      @program = Program.find_by(id: params[:id])
     end
 
     def update
@@ -28,7 +28,6 @@ class ProgramsController < ApplicationController
     end
 
     def show
-        @program =  Program.find_by(id: params[:id])
     end
 
 
@@ -37,8 +36,12 @@ class ProgramsController < ApplicationController
 
     private
 
+    def set_program
+      @program = Program.find(params[:id])
+    end
+
     def program_params
-      params.require(:program).permit(:name, :website, :description, :creator_id)
+      params.require(:program).permit(:name, :website, :description, :creator_id, :category_id)
     end
 
 end
