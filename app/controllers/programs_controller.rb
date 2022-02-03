@@ -1,18 +1,24 @@
 class ProgramsController < ApplicationController
     before_action :authenticate_user!, :except => [:index]
-    before_action :set_program, only: [:show, :edit, :update, :destroy]
+
+    #before_action :set_program, only: [:show, :edit, :update, :destroy]
+   
+
     def index
-        @programs = Program.all
+      @programs = Program.all
     end
 
     def new
+      #binding.pry
     end
 
+  
     def create
-        #binding.pry
-        @program = Program.new(program_params)
-        @program.creator_id = current_user.id
+      binding.pry
+        @program = @category.programs.build(program_params)
         binding.pry
+        @program.creator_id = current_user.id
+        #
         if @program.save
           redirect_to program_path(@program)
         else
@@ -37,11 +43,13 @@ class ProgramsController < ApplicationController
     private
 
     def set_program
-      @program = Program.find(params[:id])
+      binding.pry
+      @category = Category.find(params[:category_id])
+      @program = @category.programs.find(params[:id])
     end
 
     def program_params
-      params.require(:program).permit(:name, :website, :description, :creator_id, :category_id)
+      params.require(:program).permit(:name, :website, :description, :category_id, :creator_id)
     end
 
 end

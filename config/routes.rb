@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root to: "categories#index"
 
-  get 'programs/:id/edit', to: 'programs#edit', as: 'edit_program'
-
   devise_for :users, controllers: {
     registrations: 'users/registrations', 
     sessions: 'users/sessions',
@@ -16,13 +14,11 @@ Rails.application.routes.draw do
   end
 
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
-  post 'programs/new', to: "programs#create"
-  post '/categories/new', to: "categories#create"
 
-  resources :categories
-  resources :programs
   resources :categories do
-    resources :programs
+    resources :programs, only: [:index, :show]
   end
+
+  resources :programs
   
 end
