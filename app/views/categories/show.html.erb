@@ -1,4 +1,17 @@
 <h2><%= @category.name %></h2>
-<br>
 <%= link_to 'Back to Categories', categories_path %><br>
 <br>
+<br>
+
+<% if @category.programs.empty? %>
+    <h4>Hmm...looks like we don't have any programs in this category right now.<h4>
+    <p>Help us grow and <%= link_to 'add a program', new_program_path %></p><br>
+<% else %>
+    <%= link_to 'Add A Program', new_program_path %><br>
+    <br>
+    <h4><%= @category.programs.count %> programs found:</h4>
+
+    <% @category.programs.each do |p| %>
+        p.name
+    <% end %>
+<% end %>

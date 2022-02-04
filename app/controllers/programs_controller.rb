@@ -17,10 +17,7 @@ class ProgramsController < ApplicationController
   
     def create
       binding.pry
-        @program = @category.programs.build(program_params)
-       # binding.pry
-        @program.creator_id = current_user.id
-        #
+      @program = 
         if @program.save
           redirect_to program_path(@program)
         else
@@ -51,7 +48,7 @@ class ProgramsController < ApplicationController
     # end
 
     def program_params
-      params.require(:program).permit(:name, :website, :description, category: [:name])
+      params.require(:program).permit(:name, :website, :description, category_attributes: [:name])
     end
 
 end
