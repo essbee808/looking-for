@@ -10,6 +10,8 @@ class ProgramsController < ApplicationController
 
     def new
       #binding.pry
+      @program = Program.new
+      @program.build_category
     end
 
   
@@ -42,14 +44,14 @@ class ProgramsController < ApplicationController
 
     private
 
-    def set_program
-      #binding.pry
-      @category = Category.find(params[:category_id])
-      @program = @category.programs.find(params[:id])
-    end
+    # def set_program
+    #   #binding.pry
+    #   @category = Category.find(params[:category_id])
+    #   @program = @category.programs.find(params[:id])
+    # end
 
     def program_params
-      params.require(:program).permit(:name, :website, :description, :category_id, :creator_id)
+      params.require(:program).permit(:name, :website, :description, category: [:name])
     end
 
 end
