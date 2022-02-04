@@ -12,13 +12,15 @@
 
   <body>
     <h1>Welcome to Looking For!</h1>
-    <%= yield %>
     <br>
+    <%= link_to "Categories", categories_path %> |
+    <%= link_to "Programs", programs_path %> |
     <% if user_signed_in? %>
-      You are signed in as <%= current_user.email %><br>
+      You are signed in as <%= current_user.email %>
      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
    <% else %>
      <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
    <% end %>
+   <%= yield %>
   </body>
 </html>
