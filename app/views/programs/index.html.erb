@@ -1,4 +1,10 @@
 <h1>Programs#index</h1>
-<% @programs.each do |p| %>
-    <%= p.name %>
+<% if @programs.empty? %>
+    <h2>There are no programs at the moment. </h2>
+<% else %> 
+    <% @programs.each do |i| %>
+        Name: <%= i.name %> <br>
+        Description: <%= i.description %><br>
+        Website: <%= i.website %><br>
+    <% end %>
 <% end %>
