@@ -16,7 +16,7 @@ class ProgramsController < ApplicationController
     def create
       binding.pry
         @program = @category.programs.build(program_params)
-        binding.pry
+       # binding.pry
         @program.creator_id = current_user.id
         #
         if @program.save
@@ -43,7 +43,7 @@ class ProgramsController < ApplicationController
     private
 
     def set_program
-      binding.pry
+      #binding.pry
       @category = Category.find(params[:category_id])
       @program = @category.programs.find(params[:id])
     end
