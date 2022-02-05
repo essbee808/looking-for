@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   end
 
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
+  
+  patch '/programs/:id/edit', to: 'programs#update'
+  delete '/programs/:id', to: 'programs#destroy'
+
 
   resources :categories
   resources :programs

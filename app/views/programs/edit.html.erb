@@ -10,5 +10,12 @@
     <%= f.label :website %>
     <%= f.text_field :website %><br>
     <br>
+    <h4>Category<h4>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: true)%>
+    <h4>or create a new category:<h4>
+    <%= f.fields_for :category do |c| %>
+        <%= c.label :name %>
+        <%= c.text_field :name %>
+    <% end %>
     <%= f.submit 'Submit' %>
 <% end %>

@@ -1,12 +1,18 @@
 <% if @program %>
 <h2><%= @program.name %></h2>
-<h4><%= @program.description %></h4>
-<h4><%= link_to @program.website, target: :_blank %></h4>
-<p>Added by <%= @program.user.name %></p>
+<p><%= @program.description %></p>
+<p><%= link_to @program.website, target: :_blank %></p>
 <br>
+    <% if @program.creator_id == current_user.id && current_user %>
+    <%= button_to 'Edit', edit_program_path(@program), method: :get %>
+    <%= button_to 'Delete', program_path(@program), method: :delete %>
+    <br>
+    <br>
+    <% end %>
 <% else %>
-    <p>Oops! Looks like that program doesn't exist.</p>
+    <p>Oops! That program doesn't exist.</p>
 <% end %>
+
 <%= link_to 'Add A Program', new_program_path %><br>
 <%= link_to 'View All Programs', programs_path %><br>
 <br>

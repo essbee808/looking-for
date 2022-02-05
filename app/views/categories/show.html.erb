@@ -12,6 +12,6 @@
     <h4><%= @category.programs.count %> programs found:</h4>
 
     <% @category.programs.each do |p| %>
-        p.name
+        <%= link_to p.name, program_path(p) %><br>
     <% end %>
 <% end %>

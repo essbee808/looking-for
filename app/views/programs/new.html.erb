@@ -1,5 +1,18 @@
-<h2>Add A Program</h2>
+<h2>Create A Program</h2>
 <%= form_with model: @program do |f| %>
+<% if @program.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being
+        saved:</h2>
+
+      <ul>
+        <% @program.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
     <%= f.label :name %>
     <%= f.text_field :name %><br>
     <br>
@@ -11,7 +24,8 @@
     <%= f.label :website %>
     <%= f.text_field :website %><br>
     <br>
-    <h3>Create a category:<h3>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category')%>
+    <p>or create a new category:<p>
     <%= f.fields_for :category do |c| %>
         <%= c.label :name %>
         <%= c.text_field :name %>

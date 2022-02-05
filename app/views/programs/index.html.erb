@@ -1,11 +1,11 @@
 <h1>Programs#index</h1>
 <%= link_to "Add A Program", new_program_path %>
+<br>
+<br>
 <% if @programs.empty? %>
     <h2>There are no programs at the moment. </h2>
 <% else %> 
     <% @programs.each do |i| %>
-        Name: <%= i.name %> <br>
-        Description: <%= i.description %><br>
-        Website: <%= i.website %><br>
+        <%= link_to i.name, program_path(i) %><br>
     <% end %>
 <% end %>

@@ -8,6 +8,6 @@ class Program < ApplicationRecord
     validates :name, uniqueness: true
 
     def category_attributes=(attr_hash)
-       self.category = Category.find_or_create_by()
+       self.category = Category.find_or_create_by(attr_hash)
     end
 end
