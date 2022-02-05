@@ -1,7 +1,7 @@
 class ProgramsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_program, only: [:show, :edit, :update, :destroy]
-    before_action :get_category, only: [:create]
+    before_action :get_category, only: [:create, :update]
 
     def index
       @programs = Program.all
@@ -29,9 +29,10 @@ class ProgramsController < ApplicationController
     end
 
     def update
-      binding.pry
-      @program.update(program_params)
 
+      @program.update(program_params)
+      @program.category_id = @category.id
+      
       redirect_to program_path(@program)
     end
 

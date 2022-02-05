@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   patch '/programs/:id/edit', to: 'programs#update'
   delete '/programs/:id', to: 'programs#destroy'
 
+  delete '/categories/:id', to: 'categories#destroy'
 
+  get '/dashboard', to: 'user_programs#dashboard'
+  
   resources :categories
   resources :programs
   

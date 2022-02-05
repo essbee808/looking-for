@@ -1,4 +1,6 @@
 <h2><%= @category.name %></h2>
+<%= button_to 'Delete', category_path(@category), method: :delete %><br>
+<br>
 <%= link_to 'Back to Categories', categories_path %><br>
 <br>
 <br>

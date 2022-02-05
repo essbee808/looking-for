@@ -1,6 +1,7 @@
 <% if @program %>
 <h2><%= @program.name %></h2>
 <p><%= @program.description %></p>
+
 <p><%= link_to @program.website, target: :_blank %></p>
 <br>
     <% if @program.creator_id == current_user.id && current_user %>
