@@ -15,13 +15,14 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
   
-  patch '/programs/:id/edit', to: 'programs#update'
+  patch '/programs/:id', to: 'programs#update'
   delete '/programs/:id', to: 'programs#destroy'
 
+  patch '/categories/:id', to: 'categories#update'
   delete '/categories/:id', to: 'categories#destroy'
 
   get '/dashboard', to: 'user_programs#dashboard'
-  
+
   resources :categories
   resources :programs
   
