@@ -4,7 +4,11 @@ class ProgramsController < ApplicationController
     before_action :get_category, only: [:create, :update]
 
     def index
-      @programs = Program.all
+      if params[:category_id]
+        @programs = Category.find(params[:category_id]).programs
+      else
+        @programs = Program.all
+      end
     end
 
     def new
@@ -17,9 +21,9 @@ class ProgramsController < ApplicationController
       @program = Program.new(program_params)
       @program.creator_id = current_user.id
       @program.category_id = @category.id
-
+      binding.pry
         if @program.save
-          redirect_to program_path(@program)
+          redirect_to category_program_path(@category, @program)
         else
           render :new
         end
@@ -29,18 +33,16 @@ class ProgramsController < ApplicationController
     end
 
     def update
-
       @program.update(program_params)
       @program.category_id = @category.id
       
-      redirect_to program_path(@program)
+      redirect_to category_program_path(@category, @program)
     end
 
     def show
     end
 
     def destroy
-      #binding.pry
       @program.destroy!
       redirect_to programs_path
     end

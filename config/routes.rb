@@ -21,11 +21,15 @@ Rails.application.routes.draw do
   patch '/categories/:id', to: 'categories#update'
   delete '/categories/:id', to: 'categories#destroy'
 
-  get '/dashboard', to: 'user_programs#dashboard'
+  get '/dashboard', to: 'user_programs#index'
+
+  post '/user_programs', to: 'user_programs#create'
+  resources :user_programs, only: [:show]
 
   resources :categories, only: [:show] do
     resources :programs, only: [:show, :index]
   end
-  
+
+  resources :categories
   resources :programs, only: [:index, :show, :new, :create, :edit, :update]
 end
