@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'user_programs#dashboard'
 
-  resources :categories
-  resources :programs
+  resources :categories, only: [:show] do
+    resources :programs, only: [:show, :index]
+  end
   
+  resources :programs, only: [:index, :show, :new, :create, :edit, :update]
 end

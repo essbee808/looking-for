@@ -20,14 +20,16 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    binding.pry
+    #binding.pry
   end
 
   def edit
   end
 
   def update
-    binding.pry
+    #binding.pry
+    @category.update(category_params)
+    redirect_to category_path
   end
 
   def destroy
