@@ -10,7 +10,7 @@
     <h4>Hmm...looks like we don't have any programs in this category right now.<h4>
     <p>Help us grow and <%= link_to 'add a program', new_program_path %></p><br>
 <% else %>
-    <%= link_to 'Add A Program', new_program_path %><br>
+    <%= link_to 'Add A Program', new_category_program_path(@category) %><br>
     <br>
     <h4><%= @category.programs.count %> programs found:</h4>
 

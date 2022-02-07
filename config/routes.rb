@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   post '/user_programs', to: 'user_programs#create'
   resources :user_programs, only: [:show]
 
-  resources :categories, only: [:show] do
-    resources :programs, only: [:show, :index]
+  resources :categories, only: [:show, :index] do
+    resources :programs, only: [:show, :index, :new]
   end
 
   resources :categories

@@ -21,7 +21,7 @@ class ProgramsController < ApplicationController
       @program = Program.new(program_params)
       @program.creator_id = current_user.id
       @program.category_id = @category.id
-      binding.pry
+      #binding.pry
         if @program.save
           redirect_to category_program_path(@category, @program)
         else
