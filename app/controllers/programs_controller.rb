@@ -6,14 +6,21 @@ class ProgramsController < ApplicationController
     def index
       if params[:category_id]
         @category = Category.find(params[:category_id])
+        @programs = @category.programs
       else
         @programs = Program.all
       end
     end
 
     def new
-      @program = Program.new
-      @program.build_category
+      if params[:category_id]
+        @program = Program.new
+        @category = Category.find(params[:category_id])
+      else
+        @program = Program.new
+        @program.build_category
+      end
+      
     end
 
     def create
@@ -64,7 +71,7 @@ class ProgramsController < ApplicationController
     end
 
     def get_category
-      @category = Category.find_by(id: params[:program][:category_id])
+      @category = Category.find(params[:category_id])
       if @category.nil?
         @category = Category.create(name: params[:program][:category_attributes][:name])
       end
