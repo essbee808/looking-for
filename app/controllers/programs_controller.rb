@@ -5,7 +5,7 @@ class ProgramsController < ApplicationController
 
     def index
       if params[:category_id]
-        @programs = Category.find(params[:category_id]).programs
+        @category = Category.find(params[:category_id])
       else
         @programs = Program.all
       end
@@ -17,11 +17,10 @@ class ProgramsController < ApplicationController
     end
 
     def create
-      #binding.pry
       @program = Program.new(program_params)
       @program.creator_id = current_user.id
       @program.category_id = @category.id
-      #binding.pry
+     
         if @program.save
           redirect_to category_program_path(@category, @program)
         else
@@ -30,6 +29,17 @@ class ProgramsController < ApplicationController
     end
 
     def edit
+      if params[:category_id]
+        category = Category.find_by(id: params[:category_id])
+        if category.nil?
+          redirect_to categories_path, alert: "Category not found."
+        else
+          @program = category.programs.find_by(id: params[:id])
+          redirect_to category_programs_path(category), alert: "Program not found." if @program.nil?
+        end
+        else
+        @program = Program.find(params[:id])
+      end
     end
 
     def update

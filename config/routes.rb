@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :user_programs, only: [:show]
 
   resources :categories, only: [:show, :index] do
-    resources :programs, only: [:show, :index, :new]
+    resources :programs, only: [:show, :index, :new, :edit]
   end
 
   resources :categories

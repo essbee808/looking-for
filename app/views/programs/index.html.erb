@@ -1,11 +1,11 @@
-<h1>Programs#index</h1>
-<%= link_to "Add A Program", new_program_path %>
+<h2><%= @category.name %></h2>
 <br>
+<%= link_to "Add A Program", new_category_program_path(@category, @program) %><br>
 <br>
-<% if @programs.empty? %>
-    <h2>There are no programs at the moment. </h2>
-<% else %> 
-    <% @programs.each do |i| %>
-        <%= link_to i.name, program_path(i) %><br>
+<% if @category.programs.empty? %>
+    <p>There are no programs at the moment.</p>
+<% else %>
+    <% @category.programs.each do |p| %>
+        <%= link_to p.name, category_program_path(@category, p) %><br>
     <% end %>
 <% end %>
