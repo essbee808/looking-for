@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'user_programs#dashboard'
 
   post '/user_programs', to: 'user_programs#create'
+
+  get '/contact', to: 'application#contact'
   
   resources :user_programs, only: [:show]
 
