@@ -1,5 +1,5 @@
-<h2>Create A Program</h2>
-<%= form_with model: @program do |f| %>
+<h2><%= @category.name if @category %></h2>
+<h3>Create Program</h3>
 <% if @program.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being
@@ -13,20 +13,15 @@
     </div>
 <% end %>
 
-<% if params[:category_id] %>
-  <h3>Category: <%= @category.name %></h3>
-<% else %>
-  <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category')%>
-  <p>or create a new category:<p>
-  <%= f.fields_for :category do |c| %>
-    <%= c.label :name %>
-    <%= c.text_field :name %>
-  <% end %>
-  <% end %>
-
+  <%= form_with model: @program do |f| %>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category')%>
+      or create a new category:
+        <%= f.fields_for :category do |c| %>
+        <%= c.text_field :name %>
+        <% end %>
+        <br>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
-  <br>
 
   <br>
   <%= f.label :description %>
@@ -36,5 +31,5 @@
   <%= f.text_field :website %><br>
   <br>
 
-  <%= f.submit 'Submit' %>
+  <%= f.submit 'Create' %>
 <% end %>

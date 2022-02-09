@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    
+ 
     if @category.save
       redirect_to category_path(@category)
     else
@@ -20,14 +20,12 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    #binding.pry
   end
 
   def edit
   end
 
   def update
-    #binding.pry
     @category.update(category_params)
     redirect_to category_path
   end

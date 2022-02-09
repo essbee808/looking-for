@@ -4,10 +4,14 @@ class Program < ApplicationRecord
     has_many :user_programs
     has_many :users, through: :user_programs
 
-    validates :name, :description, :website, presence: true
-    validates :name, uniqueness: true
+    validates :description, :website, presence: true
+    validates :name, uniqueness: true, presence: true
 
-    def category_attributes=(attr_hash)
-       self.category = Category.find_or_create_by(attr_hash)
+    def category_name=(name)
+       self.category = Category.find_or_create_by(name: name)
+    end
+
+    def category_name
+       self.category ? self.category.name : nil
     end
 end

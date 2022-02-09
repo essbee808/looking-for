@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "categories#index"
+  root to: "user_programs#dashboard"
 
   devise_for :users, controllers: {
     registrations: 'users/registrations', 
@@ -14,22 +14,17 @@ Rails.application.routes.draw do
   end
 
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
-  
-  patch '/programs/:id', to: 'programs#update'
-  delete '/programs/:id', to: 'programs#destroy'
 
-  patch '/categories/:id', to: 'categories#update'
-  delete '/categories/:id', to: 'categories#destroy'
-
-  get '/dashboard', to: 'user_programs#index'
+  get '/dashboard', to: 'user_programs#dashboard'
 
   post '/user_programs', to: 'user_programs#create'
+  
   resources :user_programs, only: [:show]
 
-  resources :categories, only: [:show, :index] do
-    resources :programs, only: [:show, :index, :new, :edit]
+  resources :categories do
+    resources :programs, only: [:show, :index, :new, :create, :edit]
   end
 
   resources :categories
-  resources :programs, only: [:index, :show, :new, :create, :edit, :update]
+  resources :programs
 end

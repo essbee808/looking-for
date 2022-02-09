@@ -1,6 +1,6 @@
 <h2>Edit <%= @program.name %></h2>
 
-<%= form_for @program do |f| %>
+<%= form_with model: @program do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
     <br>
@@ -17,6 +17,7 @@
         <%= c.label :name %>
         <%= c.text_field :name %>
     <% end %>
+    <br>
     <%= f.submit 'Edit' %>
 <% end %>
 
