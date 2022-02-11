@@ -2,13 +2,10 @@
     <%= button_to 'Edit', edit_category_path(@category), method: :get %><br>
     <%= button_to 'Delete', category_path(@category), method: :delete %><br>
     <br>
-<%= link_to 'Back to Categories', categories_path %><br>
-<br>
 <br>
 
 <% if @category.programs.empty? %>
-    <h4>Hmm...looks like we don't have any programs in this category right now.<h4>
-    <p>Help us grow and <%= link_to 'add a program', new_category_program_path(@category) %></p><br>
+    <p>Help us grow and <%= link_to 'add a program', new_category_program_path(@category) %>.</p><br>
 <% else %>
     <%= link_to 'Add A Program', new_category_program_path(@category.id) %><br>
     <br>
@@ -18,3 +15,5 @@
         <%= link_to p.name, category_program_path(@category, p) %><br>
     <% end %>
 <% end %>
+<%= link_to 'Back to Categories', categories_path %><br>
+

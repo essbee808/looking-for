@@ -1,15 +1,11 @@
 class ProgramsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_program, only: [:update, :destroy]
+    before_action :set_program, except: [:index, :new, :create]
 
     def index
       if params[:category_id]
         @category = Category.find_by_id(params[:category_id])
-        if @category.nil?
-          redirect_to categories_path, alert: "Category not found"
-        else
-          @programs = @category.programs
-        end
+        @programs = @category.programs
       else
         @programs = Program.all
       end
@@ -26,38 +22,16 @@ class ProgramsController < ApplicationController
     end
 
     def create
-        @program = Program.new(program_params)
-        @program.creator_id = current_user.id
-        binding.pry
-        if params[:category_id]
-          @category = Category.find_by_id(params[:program][:category_id])
-          @program.category_id = @category.id
-        else
-          @category = Category.create(name: params[:program][:category][:name])
-        binding.pry
-        if @category.nil?
-          @category = Category.create(name: params)
-        end
-        @program.category_id = @category.id
+      #binding.pry
+      @program = Program.new(program_params)
+      @category = Category.find_by_id(params[:program][:category_id])
+      @program.category_id = @category.id
+      @program.creator_id = current_user.id
 
-        if @program.save
-          flash[:success] = "Program saved successfully."
-          redirect_to category_program_path(@category, @program)
-        else
-          flash.now[:error] = "Program could not be saved."
-          render :new
-        end
-    end
-
-    def show
-      if params[:category_id]
-        @category = Category.find_by(id: params[:category_id])
-        @program = @category.programs.find_by(id: params[:id])
-        if @program.nil?
-          redirect_to category_programs_path(@category), alert: "Program not found"
-        end
+      if @program.save
+        redirect_to category_program_path(@category, @program)
       else
-        @program = Program.find(params[:id])
+        render :new
       end
     end
 

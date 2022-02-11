@@ -1,6 +1,6 @@
-<% if params[:category_id] %>
+<% if @category %>
     <h1><%= @category.name %> Programs<h1>
-    <br>
+    <h4><%= link_to "Add A Program", new_category_program_path(@category) %></h4>
     <% @category.programs.each do |p| %>
         <h4><%= link_to p.name, category_program_path(@category, p) %></h4>
     <% end %>
