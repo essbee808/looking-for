@@ -13,12 +13,16 @@
     </div>
 <% end %>
 
-  <%= form_with model: @program do |f| %>
-      <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category')%>
+  <%= form_with model: ([@category, @program]) do |f| %>
+    <% if @category %>
+      <%= f.hidden_field :category_id, value: @category.id %>
+  <% else %>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category') %>
       or create a new category:
         <%= f.fields_for :category do |c| %>
         <%= c.text_field :name %>
         <% end %>
+    <% end %>
         <br>
   <%= f.label :name %>
   <%= f.text_field :name %><br>

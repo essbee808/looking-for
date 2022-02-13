@@ -21,11 +21,11 @@ Rails.application.routes.draw do
 
   get '/contact', to: 'application#contact'
   
-  resources :user_programs, only: [:show]
+  resources :user_programs
+  resources :programs
 
   resources :categories do
-    resources :programs, only: [:show, :index, :new, :create, :edit]
+    resources :programs, only: [:index, :new, :create, :show]
   end
   
-  resources :programs
 end
