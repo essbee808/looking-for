@@ -1,11 +1,11 @@
 class ProgramsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_program, except: [:index, :new, :create]
-    
+    before_action :is_invalid, only: [:show, :edit]
 
     def index
       if params[:category_id]
-        @category = Category.find_by_id(params[:category_id])
+        find_category
         @programs = @category.programs
       else
         @programs = Program.all
@@ -14,7 +14,7 @@ class ProgramsController < ApplicationController
 
     def new
         if params[:category_id]
-          @category = Category.find_by_id(params[:category_id])
+          find_category
           @program = @category.programs.build
         else
           @program = Program.new
@@ -23,11 +23,11 @@ class ProgramsController < ApplicationController
 
     def create
       if params[:category_id]
-        get_category_by_id
+        @category = Category.find_by_id(params[:program][:category_id])
         @program = @category.programs.build(program_params)
       else 
         @program = Program.new(program_params)
-        get_category_by_id
+        @category = Category.find_by_id(params[:program][:category_id])
         if @category.nil?
           @program.category = Category.create(name: params[:program][:category][:name])
         end
@@ -43,15 +43,9 @@ class ProgramsController < ApplicationController
     end
 
     def show
-      if set_program
-        render :show
-      else
-        redirect_to programs_path
-      end
     end
 
     def edit
-      @program = Program.find_by(params[:id])
     end
 
     def update
@@ -68,12 +62,19 @@ class ProgramsController < ApplicationController
 
     private
 
-    def get_category_by_id
-      @category = Category.find_by_id(params[:program][:category_id])
+    def find_category
+      @category = Category.find_by_id(params[:category_id])
     end
 
     def set_program
       @program = Program.find_by_id(params[:id])
+    end
+
+    def is_invalid
+      #binding.pry
+      if !set_program || !find_category
+        redirect_to programs_path
+      end
     end
 
     def program_params
