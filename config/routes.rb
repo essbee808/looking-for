@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "user_programs#dashboard"
+  root to: "categories#index"
 
   devise_for :users, controllers: {
     registrations: 'users/registrations', 
@@ -15,9 +15,8 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
 
-  get '/dashboard', to: 'user_programs#dashboard'
-
-  post '/user_programs', to: 'user_programs#create'
+  post '/saved', to: 'user_programs#create'
+  get '/dashboard', to: 'user_programs#index'
 
   get '/contact', to: 'application#contact'
   

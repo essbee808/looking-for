@@ -72,7 +72,7 @@ class ProgramsController < ApplicationController
 
     def is_invalid
       #binding.pry
-      if !set_program || !find_category
+      if !set_program
         redirect_to programs_path
       end
     end

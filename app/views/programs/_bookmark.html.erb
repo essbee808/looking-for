@@ -1,0 +1,6 @@
+<h3>Bookmark Form Test</h3>
+<%= form_with model: UserProgram.new do |f| %>
+    <%= f.hidden_field :program_id, value: @program.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Bookmark" %>
+<% end %>

@@ -1,0 +1,8 @@
+<h2>My Saved Programs</h2>
+
+    <% @saved_programs.each do |saved_program| %>
+        <% @program = Program.find_by(id: saved_program.program_id) %>
+        <%= link_to @program.name, program_path(@program) %>
+    <% end %>
+
+    <h4>Browse all programs <%= link_to 'here', programs_path %></h4>
