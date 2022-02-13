@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, except: [:index, :new, :create]
+  before_action :valid_category, only: [:show, :edit]
 
   def index
     @categories = Category.all
@@ -39,6 +40,12 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find_by(id: params[:id])
+  end
+
+  def valid_category
+    if !set_category
+      redirect_to categories_path
+    end
   end
 
   def category_params

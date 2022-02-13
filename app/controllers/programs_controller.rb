@@ -1,6 +1,7 @@
 class ProgramsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_program, except: [:index, :new, :create]
+    
 
     def index
       if params[:category_id]
@@ -41,19 +42,23 @@ class ProgramsController < ApplicationController
       end
     end
 
+    def show
+      if set_program
+        render :show
+      else
+        redirect_to programs_path
+      end
+    end
+
     def edit
       @program = Program.find_by(params[:id])
     end
 
     def update
+      #binding.pry
+     #check for admin access
       @program.update(program_params)
-      @program.category_id = @category.id
-      
-      if @program.save
-        redirect_to @program
-      else
-        render :edit
-      end
+      redirect_to program_path(@program)
     end
 
     def destroy

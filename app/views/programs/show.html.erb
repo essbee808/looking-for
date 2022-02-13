@@ -1,4 +1,3 @@
-<% if @program %>
 <h2><%= @program.name %></h2>
 <p><%= @program.description %></p>
 
@@ -10,9 +9,6 @@
     <br>
     <br>
     <% end %>
-<% else %>
-    <p>Oops! That program doesn't exist.</p>
-<% end %>
 
 <%= link_to 'Add A Program', new_program_path %><br>
 <%= link_to 'View All Programs', programs_path %><br>
