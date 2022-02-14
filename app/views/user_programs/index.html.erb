@@ -2,7 +2,9 @@
 
     <% @saved_programs.each do |saved_program| %>
         <% @program = Program.find_by(id: saved_program.program_id) %>
-        <%= link_to @program.name, program_path(@program) %>
+        <%= link_to @program.name, program_path(@program) %><br>
+       
+        <%= button_to 'Remove', user_program_path(saved_program), method: :delete %>
     <% end %>
 
     <h4>Browse all programs <%= link_to 'here', programs_path %></h4>

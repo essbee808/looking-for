@@ -43,6 +43,7 @@ class ProgramsController < ApplicationController
     end
 
     def show
+      bookmark
     end
 
     def edit
@@ -64,6 +65,10 @@ class ProgramsController < ApplicationController
 
     def find_category
       @category = Category.find_by_id(params[:category_id])
+    end
+
+    def bookmark
+      @user_program = UserProgram.where(user_id: current_user.id, program_id: params[:id])
     end
 
     def set_program
