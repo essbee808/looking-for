@@ -1,9 +1,9 @@
 <h3>Bookmark Form Test</h3>
-<% if @user_program.exists? %>
-    
-    <%= button_to 'Remove', user_program_path(@user_program), method: :delete %>
+
+<% if @bookmark %>
+    <%= button_to 'Remove', user_program_path(@bookmark), method: :delete %>
 <% else %>
-    <%= form_with model: UserProgram.new do |f| %>
+    <%= form_with model: @bookmark do |f| %>
     <%= f.hidden_field :program_id, value: @program.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "Bookmark" %>

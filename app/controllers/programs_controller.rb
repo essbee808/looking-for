@@ -43,7 +43,8 @@ class ProgramsController < ApplicationController
     end
 
     def show
-      bookmark
+      binding.pry
+      is_bookmarked
     end
 
     def edit
@@ -57,6 +58,7 @@ class ProgramsController < ApplicationController
     end
 
     def destroy
+      binding.pry
       @program.destroy!
       redirect_to programs_path
     end
@@ -67,8 +69,15 @@ class ProgramsController < ApplicationController
       @category = Category.find_by_id(params[:category_id])
     end
 
-    def bookmark
-      @user_program = UserProgram.where(user_id: current_user.id, program_id: params[:id])
+    def is_bookmarked
+      #binding.pry
+      @bookmark = current_user.user_programs.find_by(program_id: params[:id])
+   
+      if @bookmark.nil?
+        @bookmark = UserProgram.new
+      else
+        @bookmark
+      end
     end
 
     def set_program
@@ -76,7 +85,7 @@ class ProgramsController < ApplicationController
     end
 
     def is_invalid
-      #binding.pry
+      binding.pry
       if !set_program
         redirect_to programs_path
       end
