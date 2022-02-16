@@ -44,21 +44,19 @@ class ProgramsController < ApplicationController
 
     def show
       find_bookmark
-      binding.pry
+    
     end
 
     def edit
     end
 
     def update
-      #binding.pry
      #check for admin access
       @program.update(program_params)
       redirect_to program_path(@program)
     end
 
     def destroy
-      binding.pry
       @program.destroy!
       redirect_to programs_path
     end
@@ -70,7 +68,6 @@ class ProgramsController < ApplicationController
     end
 
     def find_bookmark
-      #binding.pry
       @bookmark = current_user.user_programs.find_by(program_id: params[:id])
     end
 

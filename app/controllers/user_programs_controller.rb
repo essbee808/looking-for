@@ -8,17 +8,17 @@ class UserProgramsController < ApplicationController
  end
 
  def create
-   binding.pry
     @user_program = UserProgram.new(user_program_params)
     @user_program.save
     redirect_to user_programs_path
  end
 
  def destroy
+  binding.pry
    set_user_program
    @program = Program.find_by_id(@user_program.program_id)
    @user_program.destroy
-   redirect_to program_path(@program)
+   redirect_to user_programs_path
  end
 
  private
