@@ -6,7 +6,7 @@
         <%= f.submit "Bookmark" %>
         <% end %>
     <% else %>
-       <%= button_to 'Remove', user_program_path(@bookmark), method: :delete %>
+       <%= button_to 'Remove', dashboard_path(@bookmark), method: :delete %>
     <% end %>
     
 

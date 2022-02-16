@@ -10,7 +10,7 @@ class UserProgramsController < ApplicationController
  def create
     @user_program = UserProgram.new(user_program_params)
     @user_program.save
-    redirect_to user_programs_path
+    redirect_to dashboard_path
  end
 
  def destroy
@@ -18,7 +18,7 @@ class UserProgramsController < ApplicationController
    set_user_program
    @program = Program.find_by_id(@user_program.program_id)
    @user_program.destroy
-   redirect_to user_programs_path
+   redirect_to dashboard_path
  end
 
  private
