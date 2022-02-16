@@ -1,5 +1,5 @@
 class ProgramsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:index, :show]
     before_action :set_program, except: [:index, :new, :create]
     before_action :is_invalid, only: [:show, :edit]
 
@@ -44,7 +44,7 @@ class ProgramsController < ApplicationController
 
     def show
       binding.pry
-      is_bookmarked
+      bookmarked
     end
 
     def edit
@@ -69,8 +69,8 @@ class ProgramsController < ApplicationController
       @category = Category.find_by_id(params[:category_id])
     end
 
-    def is_bookmarked
-      #binding.pry
+    def bookmarked
+      binding.pry
       @bookmark = current_user.user_programs.find_by(program_id: params[:id])
    
       if @bookmark.nil?
@@ -85,10 +85,7 @@ class ProgramsController < ApplicationController
     end
 
     def is_invalid
-      binding.pry
-      if !set_program
-        redirect_to programs_path
-      end
+      redirect_to programs_path if !set_program
     end
 
     def program_params
