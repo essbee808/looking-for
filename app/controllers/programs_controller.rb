@@ -43,8 +43,8 @@ class ProgramsController < ApplicationController
     end
 
     def show
+      find_bookmark
       binding.pry
-      bookmarked
     end
 
     def edit
@@ -69,15 +69,9 @@ class ProgramsController < ApplicationController
       @category = Category.find_by_id(params[:category_id])
     end
 
-    def bookmarked
-      binding.pry
+    def find_bookmark
+      #binding.pry
       @bookmark = current_user.user_programs.find_by(program_id: params[:id])
-   
-      if @bookmark.nil?
-        @bookmark = UserProgram.new
-      else
-        @bookmark
-      end
     end
 
     def set_program
