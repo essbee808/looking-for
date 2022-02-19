@@ -19,7 +19,7 @@ class UserProgramsController < ApplicationController
    set_user_program
    @program = Program.find_by_id(@user_program.program_id)
    @user_program.destroy
-   redirect_to dashboard_path
+   redirect_to category_program_path(@program.category, @program)
  end
 
  private
