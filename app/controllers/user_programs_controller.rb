@@ -15,7 +15,6 @@ class UserProgramsController < ApplicationController
  end
 
  def destroy
-  binding.pry
    set_user_program
    @program = Program.find_by_id(@user_program.program_id)
    @user_program.destroy
