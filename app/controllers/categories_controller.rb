@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, except: [:index, :new, :create]
   before_action :valid_category, only: [:show, :edit]
+  before_action :is_admin, except: [:index, :show]
 
   def index
     @categories = Category.all
@@ -37,6 +38,13 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def is_admin
+    binding.pry
+    if !current_user.admin
+      redirect_to categories_path
+    end
+  end
 
   def set_category
     @category = Category.find_by(id: params[:id])

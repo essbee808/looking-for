@@ -22,6 +22,7 @@ class ProgramsController < ApplicationController
     end
 
     def create
+      binding.pry
       if params[:category_id]
         @category = Category.find_by_id(params[:program][:category_id])
         @program = @category.programs.build(program_params)
