@@ -40,7 +40,6 @@ class CategoriesController < ApplicationController
   private
 
   def is_admin
-    binding.pry
     if !current_user.admin
       redirect_to categories_path
     end
