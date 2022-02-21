@@ -5,7 +5,7 @@
     <br>
 <br>
 
-<% if @category.programs.empty? %>
+<% if @sorted_programs.empty? %>
     <p>Help us grow and <%= link_to 'add a program', new_category_program_path(@category) %>.</p><br>
 <% else %>
     <%= link_to 'Add A Program', new_category_program_path(@category.id) %><br>
