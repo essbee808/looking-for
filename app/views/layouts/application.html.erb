@@ -18,8 +18,13 @@
       <%= link_to "Categories", categories_path %> |
       <%= link_to "Programs", programs_path %> |
       <%= link_to "Contact Us", contact_path %> |
+      <% if current_user.admin %>
+        <b>Admin User:</b> <%= current_user.email %> |
+      <% else %>
       You are signed in as <%= current_user.email %>
+      <% end %>
      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+
    <% else %>
      <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
    <% end %>

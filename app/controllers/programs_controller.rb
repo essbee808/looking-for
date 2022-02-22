@@ -2,10 +2,11 @@ class ProgramsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_program, except: [:index, :new, :create]
     before_action :is_invalid, only: [:show, :edit]
+    before_action :
 
     def index
       if params[:category_id]
-        find_category
+        get_category
         @programs = @category.programs
       else
         @programs = Program.all
@@ -14,7 +15,7 @@ class ProgramsController < ApplicationController
 
     def new
         if params[:category_id]
-          find_category
+          get_category
           @program = @category.programs.build
         else
           @program = Program.new
@@ -23,11 +24,11 @@ class ProgramsController < ApplicationController
 
     def create
       if params[:category_id]
-        @category = Category.find_by_id(params[:program][:category_id])
+        set_category
         @program = @category.programs.build(program_params)
       else 
         @program = Program.new(program_params)
-        @category = Category.find_by_id(params[:program][:category_id])
+        set_category
       end
 
       @program.creator_id = current_user.id
@@ -42,14 +43,13 @@ class ProgramsController < ApplicationController
     def show
       find_bookmark
       find_category
-
     end
 
     def edit
+      binding.pry
     end
 
     def update
-     #check for admin access
       @program.update(program_params)
       redirect_to program_path(@program)
     end
@@ -61,12 +61,16 @@ class ProgramsController < ApplicationController
 
     private
 
-    def find_category
+    def get_category
       @category = Category.find_by_id(params[:category_id])
     end
 
     def find_bookmark
       @bookmark = current_user.user_programs.find_by(program_id: params[:id])
+    end
+
+    def set_category
+      @category = Category.find_by_id(params[:program][:category_id])
     end
 
     def set_program
