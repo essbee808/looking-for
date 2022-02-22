@@ -2,11 +2,11 @@ class ProgramsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_program, except: [:index, :new, :create]
     before_action :is_invalid, only: [:show, :edit]
-    before_action :
+    before_action :is_creator, only: [:edit, :update, :destroy]
 
     def index
       if params[:category_id]
-        get_category
+        find_category
         @programs = @category.programs
       else
         @programs = Program.all
@@ -15,7 +15,7 @@ class ProgramsController < ApplicationController
 
     def new
         if params[:category_id]
-          get_category
+          find_category
           @program = @category.programs.build
         else
           @program = Program.new
@@ -61,7 +61,13 @@ class ProgramsController < ApplicationController
 
     private
 
-    def get_category
+    def is_creator
+      if current_user.id != @program.creator_id
+        redirect_to programs_path
+      end
+    end
+
+    def find_category
       @category = Category.find_by_id(params[:category_id])
     end
 
