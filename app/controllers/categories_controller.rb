@@ -34,7 +34,10 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
+      @category.programs.each do |p|
+        p.user_programs.destroy_all
+      end
+    @category.destroy!
     redirect_to categories_path
   end
 

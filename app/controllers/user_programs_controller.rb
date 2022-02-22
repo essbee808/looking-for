@@ -10,7 +10,6 @@ class UserProgramsController < ApplicationController
  def create
     @user_program = UserProgram.new(user_program_params)
     @user_program.save
-    #binding.pry
     redirect_to category_program_path(@user_program.program.category, @user_program.program)
  end
 
