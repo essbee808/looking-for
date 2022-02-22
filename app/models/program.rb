@@ -4,7 +4,7 @@ class Program < ApplicationRecord
     has_many :user_programs
     has_many :users, through: :user_programs
 
-    validates :description, :website, presence: true
+    validates :description, :website, :category_id, presence: true
     validates :name, uniqueness: true, presence: true
 
     def category_name=(name)

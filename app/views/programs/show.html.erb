@@ -4,12 +4,12 @@
 
 <p><%= link_to @program.website, target: :_blank %></p>
 <br>
-    <% if @program.creator_id == current_user.id && current_user %>
+    <% if @program.creator_id == current_user.id %>
     <%= button_to 'Edit', edit_program_path(@program), method: :get %>
     <%= button_to 'Delete', program_path(@program), method: :delete %>
     <br>
     <br>
     <% end %>
-<%= link_to 'Add A Program', new_category_program_path(@category, @program) %><br>
+<%= link_to 'Add A Program', new_category_program_path(@program.category, @program) %><br>
 <%= link_to 'View All Programs', programs_path %><br>
 <br>

@@ -1,7 +1,9 @@
 <h2><%= @category.name %></h2>
     <%= link_to 'Back to Categories', categories_path %>
-    <%= button_to 'Edit', edit_category_path(@category), method: :get %><br>
-    <%= button_to 'Delete', category_path(@category), method: :delete %><br>
+    <% if current_user.admin %>
+        <%= button_to 'Edit', edit_category_path(@category), method: :get %><br>
+        <%= button_to 'Delete', category_path(@category), method: :delete %><br>
+    <% end %>
     <br>
 <br>
 
@@ -11,7 +13,6 @@
     <%= link_to 'Add A Program', new_category_program_path(@category.id) %><br>
     <br>
     <h4><%= pluralize(@category.programs.count, 'program') %> found:</h4>
-
       <% @sorted_programs.each do |p| %>
         <%= link_to p.name, category_program_path(p.category, p) %><br>
     <% end %>

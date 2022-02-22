@@ -1,8 +1,9 @@
 <h2>My Saved Programs</h2>
 
     <% @bookmarked_programs.each do |bookmarked_program| %>
+    <% binding.pry %>
         <% @program = Program.find_by(id: bookmarked_program.program_id) %>
-        <%= link_to @program.name, program_path(@program) %>
+        <%= link_to @program.name, category_program_path(@program.category, @program) %>
         <%= button_to 'Remove', user_program_path(bookmarked_program), method: :delete %><br>
     <% end %>
 

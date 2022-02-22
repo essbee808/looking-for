@@ -16,7 +16,7 @@
   <%= form_with model: ([@category, @program]) do |f| %>
     <% if @category %>
       <%= f.hidden_field :category_id, value: @category.id %>
-  <% else %>  
+  <% else %>
         <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category') %><br>
       <% if current_user.admin %>
         or create a new category:

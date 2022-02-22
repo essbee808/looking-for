@@ -45,6 +45,7 @@ class ProgramsController < ApplicationController
     def show
       find_bookmark
       find_category
+
     end
 
     def edit
