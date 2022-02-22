@@ -7,6 +7,7 @@
 
       <ul>
         <% @program.errors.full_messages.each do |message| %>
+        <%binding.pry%>
             <li><%= message %></li>
         <% end %>
       </ul>
@@ -18,12 +19,6 @@
       <%= f.hidden_field :category_id, value: @category.id %>
   <% else %>
         <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category') %><br>
-      <% if current_user.admin %>
-        or create a new category:
-          <%= f.fields_for :category do |c| %>
-          <%= c.text_field :name %>
-          <% end %>
-      <% end %>
     <% end %>
         <br>
   <%= f.label :name %>
