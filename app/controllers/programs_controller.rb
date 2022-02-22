@@ -28,9 +28,6 @@ class ProgramsController < ApplicationController
       else 
         @program = Program.new(program_params)
         @category = Category.find_by_id(params[:program][:category_id])
-        if @category.nil?
-          @program.category = Category.create(name: params[:program][:category][:name])
-        end
       end
 
       @program.creator_id = current_user.id

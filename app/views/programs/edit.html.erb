@@ -12,10 +12,9 @@
     <br>
     <h4>Category:<h4>
     <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: true)%>
-    <%# if admin %>
     <br>
     <br>
-    <%= f.submit 'Edit' %>
+    <%= f.submit 'Save Changes' %>
 <% end %>
 
 
