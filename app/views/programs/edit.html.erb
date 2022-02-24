@@ -1,20 +1,29 @@
 <h2>Edit <%= @program.name %></h2>
 
-<%= form_with model: @program do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_area :description %><br>
-    <br>
-    <%= f.label :website %>
-    <%= f.text_field :website %><br>
-    <br>
-    <h4>Category:<h4>
-    <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: true)%>
-    <br>
-    <br>
-    <%= f.submit 'Save Changes' %>
-<% end %>
+<div class="row">
+    <div class="col">
+    <%= form_with model: @program do |f| %>
+        <%= f.label 'Category:' %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: true) %><br>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col">
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="col">
+        <%= f.text_field :website, class: "form-control" %><br>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <%= f.text_area :description, class: "form-control" %><br>
+
+        <%= f.submit 'Save Changes'%>
+        <% end %>
+    </div>
+</div>
 
