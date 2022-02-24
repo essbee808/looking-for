@@ -14,23 +14,4 @@
     </div>
 <% end %>
 
-  <%= form_with model: ([@category, @program]) do |f| %>
-    <% if @category %>
-      <%= f.hidden_field :category_id, value: @category.id %>
-  <% else %>
-        <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category') %><br>
-    <% end %>
-        <br>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-
-  <br>
-  <%= f.label :description %>
-  <%= f.text_area :description %><br>
-  <br>
-  <%= f.label :website %>
-  <%= f.text_field :website %><br>
-  <br>
-
-  <%= f.submit 'Create' %>
-<% end %>
+<%= render "form" %>
