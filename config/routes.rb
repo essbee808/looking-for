@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post '/saved', to: 'user_programs#create'
   get '/dashboard', to: 'user_programs#index'
 
+  get '/about', to: 'application#about'
   get '/contact', to: 'application#contact'
   
   resources :user_programs

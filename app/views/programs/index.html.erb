@@ -1,16 +1,16 @@
 <% if @category %>
-    <h1><%= @category.name %> Programs<h1>
+    <h3><%= @category.name %> Programs<h3>
     <h4><%= link_to "Add A Program", new_category_program_path(@category) %></h4>
     <% @category.programs.each do |p| %>
         <h4><%= link_to p.name, category_program_path(@category, p) %></h4>
     <% end %>
 <% else %>
-    <h2>All programs displayed here by category</h2>
+    <h3>All programs displayed here by category</h3>
     <%= link_to "Add A Program", new_program_path %>
     <br>
     <br>
     <% Category.all.each do |c| %>
-        <h3><%= c.name %></h3>
+        <h4><%= c.name %></h4>
         <% c.programs.each do |p| %>
             <%= link_to p.name, category_program_path(c, p) %><br>
         <% end %>
