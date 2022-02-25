@@ -34,12 +34,6 @@
             <li><%= link_to "Sign Out", destroy_user_session_path, class: "dropdown-item" %></li>
           </ul>
         </li>
-        <% if current_user.admin %>
-            <b>Admin: <%= current_user.email %>
-        <% else %>
-            You are signed in as <%= current_user.email %>
-         <% end %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       </ul>
     </div>
   </div>

@@ -1,3 +1,11 @@
+<% if current_user.admin %>
+    <h3>Welcome, <%= current_user.name %>!</h3>
+    <h5>Role: Admin</h5>
+<% else %>
+    <h3>Welcome, <%= current_user.name %>!</h3>
+    <h5>Role: Staff</h5>
+<% end %>
+
 <h3>My Bookmarks</h3>
     <% @bookmarked_programs.each do |bookmarked_program| %>
         <% @program = Program.find_by(id: bookmarked_program.program_id) %>
