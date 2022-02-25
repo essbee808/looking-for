@@ -27,12 +27,11 @@
         <!-- continue -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/programs" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            My Account Dropdown Link
+            My Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/users/sign_out">Signout</a></li>
-            <li><a class="dropdown-item" href="/programs">Programs</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, class: "dropdown-item" %></li>
           </ul>
         </li>
         <% if current_user.admin %>
