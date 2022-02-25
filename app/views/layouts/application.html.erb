@@ -12,7 +12,7 @@
 
   <body>
    <%= render "layouts/navbar" %>
-   
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
    <%= yield %>
   </body>
 </html>

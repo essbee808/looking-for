@@ -3,7 +3,8 @@ class Category < ApplicationRecord
 
     validates :name, presence: true, uniqueness: true
 
-    def sort_by_abc_order(programs)
+    def programs_in_order(programs)
       self.programs.sort_by {|obj| obj.name }
     end
+
 end

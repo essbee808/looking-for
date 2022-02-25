@@ -1,12 +1,13 @@
 <h2>Categories</h2>
 
+<%= link_to "New Category", new_category_path %>
+
 <% @categories.each do |c| %>
  <div class="row">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><%= c.name %></h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         <%= link_to pluralize(c.programs.count, 'program'), category_path(c), class: "btn btn-primary" %>
      </div>
   </div>
