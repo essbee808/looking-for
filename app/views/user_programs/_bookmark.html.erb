@@ -1,3 +1,4 @@
+
 <% if params[:id].present? %>
     <% if @bookmark.nil? %>
         <% @bookmark = UserProgram.new %>
@@ -12,5 +13,3 @@
 <% else %>
     <%= button_to 'Remove', user_program_path(@bookmark), method: :delete %> 
 <% end %>
-
-
