@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "categories#index"
+  root to: "user_programs#index"
 
   devise_for :users, controllers: {
     registrations: 'users/registrations', 
