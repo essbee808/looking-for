@@ -1,5 +1,5 @@
 class ProgramsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!
     before_action :set_program, except: [:index, :new, :create]
     before_action :is_invalid, only: [:show, :edit]
     before_action :is_creator, only: [:edit, :update, :destroy]
