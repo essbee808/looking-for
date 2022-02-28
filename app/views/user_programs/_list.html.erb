@@ -1,0 +1,7 @@
+<h3>My Bookmarks</h3>
+    <% @bookmarked_programs.each do |bookmarked_program| %>
+        <% @program = Program.find_by(id: bookmarked_program.program_id) %>
+        <%= link_to @program.name, category_program_path(@program.category, @program) %>
+        <%= button_to 'Remove', user_program_path(bookmarked_program), method: :delete %><br>
+    <% end %>
+    <p>Browse all programs <%= link_to 'here', programs_path %></p>

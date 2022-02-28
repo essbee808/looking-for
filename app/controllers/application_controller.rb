@@ -8,4 +8,7 @@ class ApplicationController < ActionController::Base
     def contact
     end
 
+    def dashboard
+    end
+
 end
