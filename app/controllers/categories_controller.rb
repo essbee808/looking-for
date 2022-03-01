@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :is_admin, except: [:index, :show]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.ordered_by_name
   end
 
   def new
