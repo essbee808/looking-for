@@ -7,16 +7,12 @@
     <br>
 <br>
 
-<% if @sorted_programs.empty? %>
-    <p>Help us grow and <%= link_to 'add a program', new_category_program_path(@category) %>.</p><br>
-<% else %>
     <%= link_to 'Add A Program', new_category_program_path(@category.id) %><br>
     <br>
-    <h4><%= pluralize(@category.programs.count, 'program') %> found:</h4>
-      <% @sorted_programs.each do |p| %>
-        <%= link_to p.name, category_program_path(p.category, p) %><br>
+    <h4><%= pluralize(@programs.count, 'program') %> found:</h4>
+      <% @programs.each do |p| %>
+        <%= link_to p.name, category_program_path(@category, p) %><br>
     <% end %>
-<% end %>
 <br>
-
+<p>Help us grow and <%= link_to 'add a program', new_category_program_path(@category) %></p>
 
