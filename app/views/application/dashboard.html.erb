@@ -1,4 +1,6 @@
 <h4>Dashboard Test</h4>
+
+
 <% if current_user.admin %>
     <h3>Welcome, <%= current_user.name %>!</h3>
     <h5>Role: Admin</h5>
@@ -10,3 +12,4 @@
 <%= link_to "My Bookmarks", bookmarks_path %><br>
 <%= link_to "View Categories", categories_path %><br>
 <%= link_to "View Programs", programs_path %>
+

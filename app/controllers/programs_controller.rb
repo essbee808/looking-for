@@ -7,6 +7,7 @@ class ProgramsController < ApplicationController
     def index
       if params[:category_id]
         find_category
+        binding.pry
         @programs = @category.programs
       else
         @programs = Program.all

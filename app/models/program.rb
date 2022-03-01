@@ -7,6 +7,8 @@ class Program < ApplicationRecord
     validates :description, :website, :category_id, presence: true
     validates :name, uniqueness: true, presence: true
 
+    scope :ordered_by_name, -> { order(name: :asc) }
+
     def category_name=(name)
        self.category = Category.find_or_create_by(name: name)
     end
