@@ -11,9 +11,10 @@
     <br>
     <% Category.all.each do |c| %>
         <h4><%= c.name %></h4>
+        <ul>
         <% c.programs.each do |p| %>
-            <%= link_to p.name, category_program_path(c, p) %><br>
+            <li><%= link_to p.name, category_program_path(c, p) %></li>
         <% end %>
-        <br>
+        </ul>
     <% end %>
 <% end %>
