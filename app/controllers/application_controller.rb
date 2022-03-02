@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
     end
 
     def dashboard
-        binding.pry
     end
 
 end

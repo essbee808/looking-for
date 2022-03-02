@@ -2,7 +2,7 @@
 <%= render partial: 'user_programs/bookmark' %>
 <p><%= @program.description %></p>
 
-<p><%= link_to nil, "#{@program.website}", :target => "_blank" %></p>
+<p><%= link_to "Learn More", "#{@program.website}", :target => "_blank" %></p>
 <br>
     <% if @program.creator_id == current_user.id %>
     <%= button_to 'Edit', edit_program_path(@program), method: :get %>
