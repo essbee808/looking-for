@@ -1,7 +1,7 @@
 class UserProgramsController < ApplicationController
 
  def index
-    @bookmarked_programs = UserProgram.all.where(user_id: current_user.id)    
+    @bookmarked_programs = UserProgram.all.where(user_id: current_user)
  end
 
  def new
