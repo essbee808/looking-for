@@ -8,8 +8,10 @@
         <%= f.submit "Bookmark" %>
         <% end %>
     <% else %>
-        <%= button_to 'Remove', user_program_path(@bookmark), method: :delete %>
+        <%= link_to user_program_path(@bookmark), method: :delete do %>
+            <i class="bi bi-bookmark-star-fill"></i>Remove
+        <% end %>
     <% end %>
 <% else %>
-    <%= button_to 'Remove', user_program_path(@bookmark), method: :delete %> 
+    <%= link_to 'Remove', user_program_path(@bookmark), method: :delete %> 
 <% end %>
