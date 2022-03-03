@@ -34,8 +34,7 @@ class ProgramsController < ApplicationController
       @program.creator_id = current_user.id
 
       if @program.save
-        binding.pry
-        redirect_to category_program_path(@program.category, @program)
+        redirect_to category_program_path(@program.category_id, @program)
       else
         render :new
       end
