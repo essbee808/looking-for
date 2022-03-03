@@ -12,10 +12,19 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= render "layouts/navbar" %>
-    <% end %>
-   <%= yield %>
+    <header>
+      <% if user_signed_in? %>
+        <%= render "layouts/navbar" %>
+      <% end %>
+    </header>
+
+      <div class="container">
+           <%= yield %>
+      </div>
+
+    <footer class="bg-light text-center text-white">
+      <%= render "layouts/footer" %>
+    </footer>
   </body>
 </html>
 
