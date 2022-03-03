@@ -1,15 +1,3 @@
-<h2><%= @category.name if @category %></h2>
 <h3>Create Program</h3>
-<% if @program.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being
-        saved:</h2>
-      <ul>
-        <% @program.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-<% end %>
 
 <%= render 'form' %>

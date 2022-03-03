@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, except: [:index, :new, :create]
   before_action :valid_category, only: [:show, :edit]
   before_action :is_admin, except: [:index, :show]
+  
 
   def index
     @categories = Category.all.ordered_by_name

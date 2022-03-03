@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 
  gem 'omniauth'
  gem 'omniauth-google-oauth2'
+ gem 'omniauth-facebook'
 
  # Protects against any cross-site forgery
  gem 'omniauth-rails_csrf_protection'
