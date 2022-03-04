@@ -2,10 +2,8 @@
     <%= form_with model: UserProgram.new do |f| %>
     <%= f.hidden_field :program_id, value: @program.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "Bookmark" %>
+    <%= f.submit "Bookmark", class: "btn btn-primary" %>
     <% end %>
 <% else %>
-    <%= link_to user_program_path(@user_program), method: :delete do %>
-        <i class="bi bi-bookmark-star-fill"></i>Remove
-    <% end %>
+    <%= button_to "Remove", user_program_path(@user_program), method: :delete, class: "btn btn-danger" %>
 <% end %>
