@@ -76,7 +76,7 @@ class ProgramsController < ApplicationController
 
 
     def find_bookmark
-      @bookmark = current_user.user_programs.find_by(program_id: params[:id])
+      @user_program = current_user.user_programs.find_by(program_id: params[:id])
     end
 
     def is_invalid

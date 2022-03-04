@@ -1,7 +1,7 @@
 class UserProgramsController < ApplicationController
 
  def index
-    @bookmarks = current_user.user_programs
+    @user_programs = current_user.user_programs
  end
 
  def new
@@ -15,7 +15,7 @@ class UserProgramsController < ApplicationController
 
  def destroy
    set_user_program
-   @program = Program.find_by_id(@user_program.program_id)
+   get_program
    @user_program.destroy
    redirect_to category_program_path(@program.category, @program)
  end
@@ -26,8 +26,11 @@ class UserProgramsController < ApplicationController
    @user_program = UserProgram.find_by_id(params[:id])
  end
 
+ def get_program
+   @program = Program.find_by_id(@user_program.program_id)
+ end
+
  def user_program_params
     params.require(:user_program).permit(:program_id, :user_id)
  end
-
 end
