@@ -7,15 +7,17 @@
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-            <p class="lead fw-normal mb-0 me-3">Sign in with:</p>
+            <p class="lead fw-normal mb-3 me-3">Sign in with:</p>
+          </div>
         
+          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
            <a class="btn btn-outline-dark lead fw-normal mb-0 me-3" href="/users/auth/google_oauth2" role="button" style="text-transform:none">
             <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
             Google
-          </a><br>
+          </a>
 
           <div class="d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
+            <p class="text-center fw-bold mx-3 mb-1"></p>
           </div>
           
            <a class="btn btn-outline-dark" href="/users/auth/facebook" role="button" style="text-transform:none">
@@ -38,25 +40,23 @@
 
           <!-- Password input -->
           <div class="form-outline mb-3">
-             <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
+             <%= f.label :password, class: "form-label" %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg", placeholder: "Enter password" %>
           </div>
 
           <div class="d-flex justify-content-between align-items-center">
             <!-- Checkbox -->
           <% if devise_mapping.rememberable? %>
             <div class="form-check mb-0">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
+              <%= f.check_box :remember_me, class: "form-check-input me-2" %>
+              <%= f.label :remember_me, class: "form-check-label" %>
             </div>
           <% end %>
             <a href="#!" class="text-body">Forgot password?</a>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <%= f.submit "Login", class: "btn btn-primary btn-lg"%>
-            <button type="button" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+            <%= f.submit "Login", class: "btn btn-primary btn-lg", style: "padding-left: 2.5rem; padding-right: 2.5rem"%>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
                 <%= link_to "Register", new_user_registration_path, class: "link-danger"%></p>
           <% end %>
