@@ -22,6 +22,7 @@
      height: 100%;
    }
  }
+ 
 
 :root {
   --bs-blue: #0d6efd;
@@ -253,10 +254,11 @@ sup {
 
 a {
   color: #0d6efd;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover {
   color: #0a58ca;
+  text-decoration: underline;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {

@@ -1,5 +1,7 @@
 <h2><%= @program.name %></h2>
+<p>View other programs in: <%= link_to @program.category.name, category_path(@program.category) %></p>
 <%= render partial: 'user_programs/form' %>
+<br>
 <p><%= @program.description %></p>
 
 <p><%= link_to "Learn More", "#{@program.website}", :target => "_blank" %></p>
@@ -10,6 +12,26 @@
     <br>
     <br>
     <% end %>
+<br>
 <%= link_to 'Add A Program', new_category_program_path(@program.category) %><br>
 <%= link_to 'View All Programs', programs_path %><br>
-<br>
+<%= link_to 'My Bookmarks', bookmarks_path %>
+
+<div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title"><%= @program.name %></h5>
+         <% if @program.creator_id == current_user.id %>
+            <%= button_to 'Edit', edit_program_path(@program), method: :get %>
+            <%= button_to 'Delete', program_path(@program), method: :delete %> 
+        <% end %>
+    <br>
+    <p class="card-text"><%= @program.description %></p>
+    <%= link_to "Learn More", "#{@program.website}", :target => "_blank" %><br>
+    <br>
+    <%= render partial: 'user_programs/form' %>
+  </div>
+</div>
+
+
+
+

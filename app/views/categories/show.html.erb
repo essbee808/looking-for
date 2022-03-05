@@ -1,18 +1,16 @@
 <h2><%= @category.name %></h2>
-    <%= link_to 'Back to Categories', categories_path %>
+<p>Help us grow and <%= link_to 'add a program', new_category_program_path(@category) %></p>
     <% if current_user.admin %>
         <%= button_to 'Edit', edit_category_path(@category), method: :get %><br>
         <%= button_to 'Delete', category_path(@category), method: :delete %><br>
     <% end %>
     <br>
-<br>
 
-    <%= link_to 'Add A Program', new_category_program_path(@category.id) %><br>
     <br>
     <h4><%= pluralize(@programs.count, 'program') %> found:</h4>
-      <% @programs.each do |p| %>
+      <% @programs.ordered_by_name.each do |p| %>
         <%= link_to p.name, category_program_path(@category, p) %><br>
     <% end %>
 <br>
-<p>Help us grow and <%= link_to 'add a program', new_category_program_path(@category) %></p>
+
 
