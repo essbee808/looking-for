@@ -1,4 +1,3 @@
-<h4>Dashboard Test</h4>
 <% if current_user.admin%>
     <h3>Welcome, <%= current_user.name %>!</h3>
     <h5>You are admin.</h5>
@@ -6,7 +5,34 @@
     <h3>Welcome, <%= current_user.name %>!</h3>
 <% end %>
 
-<%= link_to "My Bookmarks", bookmarks_path %><br>
-<%= link_to "View Categories", categories_path %><br>
-<%= link_to "View Programs", programs_path %>
+<div class="card-group">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">My Bookmarks</h5>
+      <p class="card-text">View all saved bookmarks here.</p>
+      <%= link_to "View", bookmarks_path, class: "btn btn-primary" %>
+    </div>
+  
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Categories</h5>
+      <p class="card-text">Categories found here.</p>
+      <%= link_to "View", categories_path, class: "btn btn-primary" %>
+      <br>
+      <br>
+      <%= link_to "New Category", new_category_path if current_user.admin %>
+    </div>
 
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Programs</h5>
+      <p class="card-text">List of programs</p>
+      <%= link_to "View", programs_path, class: "btn btn-primary" %>
+      <br>
+      <br>
+      <%= link_to "New Program", new_program_path if current_user.admin %>
+    </div>
+  </div>
+</div>

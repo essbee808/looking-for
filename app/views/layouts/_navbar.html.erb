@@ -20,9 +20,6 @@
         <li class="nav-item <%= active_class(programs_path)%>">
           <%= link_to "Programs", programs_path, class: "nav-link" %>
         </li>
-
-        <li class="nav-item <%= active_class(contact_path)%>">
-          <%= link_to "Contact", contact_path, class: "nav-link" %>
    
         <li class="nav-item dropdown">
           <%= link_to "Signed in as #{current_user.email}!", edit_user_registration_path, {:class => "nav-link dropdown-toggle", :id => "navbarDropdownMenuLink", 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' } %>
@@ -33,6 +30,9 @@
           </ul>
         </li>
       </ul>
-    </div>
+    <%= form_with(url: '/categories', method: 'get', local: true) do %>
+      <%= text_field_tag(:search) %>
+      <%= submit_tag("Search") %>
+    <% end %>
   </div>
 </nav>

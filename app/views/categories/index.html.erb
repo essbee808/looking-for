@@ -2,8 +2,13 @@
 
 <%= link_to "New Category", new_category_path if current_user.admin %>
 
-<div>
-<% @categories.each do |c| %>
-  <%= link_to c.name, category_path(c)%><br>
-<% end %>
+<% if @categories.empty? %>
+  No category found.
+<% else %>
+  <div>
+    <% @categories.each do |c| %>
+    <%= link_to c.name, category_path(c)%><br>
+    <% end %>
 </div>
+<% end %>
+
