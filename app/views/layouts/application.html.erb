@@ -15,15 +15,12 @@
     <header>
       <% if user_signed_in? %>
         <%= render "layouts/navbar" %>
-      <% else %>
-        <%= render "layouts/login" %>
       <% end %>
     </header>
 
       <div class="container-fluid">
            <%= yield %>
       </div>
-
 
   </body>
 </html>
