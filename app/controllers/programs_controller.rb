@@ -62,6 +62,7 @@ class ProgramsController < ApplicationController
     private
 
     def verify_creator
+      binding.pry
       if current_user.id != @program.creator_id
         redirect_to programs_path
       end

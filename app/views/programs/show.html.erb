@@ -1,17 +1,40 @@
-<h2><%= @program.name %></h2>
+<section>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <h2><%= @program.name %></h2>
+      <br>
+      <% if @program.creator_id == current_user.id %>
+        <%= link_to 'Edit', edit_program_path(@program), method: :get %> or 
+        <%= link_to 'Delete', program_path(@program), method: :delete %>
+      <% end %>
+        <br><br><br>
+        <div>
+          <h5>Description: </h5><p><%= @program.description %></p>
+        </div>
+      <%= render partial: 'user_programs/form' %>
+    </div>
+      
+    <div class="col">
+      <h4><strong>Next Steps:</strong></h4>
+      <br>
+      <p>Go to <%= link_to "program's website.", "#{@program.website}", :target => "_blank" %></p>
+      <p>Call </p>
+    </div>
+  </div>
+</section>
+
+<%# Buttons %>
+
+
 <p>View other programs in: <%= link_to @program.category.name, category_path(@program.category) %></p>
-<%= render partial: 'user_programs/form' %>
+
 <br>
 <p><%= @program.description %></p>
 
 <p><%= link_to "Learn More", "#{@program.website}", :target => "_blank" %></p>
 <br>
-    <% if @program.creator_id == current_user.id %>
-    <%= button_to 'Edit', edit_program_path(@program), method: :get %>
-    <%= button_to 'Delete', program_path(@program), method: :delete %>
-    <br>
-    <br>
-    <% end %>
+    
 <br>
 <%= link_to 'Add A Program', new_category_program_path(@program.category) %><br>
 <%= link_to 'View All Programs', programs_path %><br>
