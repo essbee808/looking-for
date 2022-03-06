@@ -4,9 +4,9 @@ class Program < ApplicationRecord
     has_many :user_programs
     has_many :users, through: :user_programs
 
-    validates :description, :website, :category_id, presence: true
+    validates :description, length: { in: 50...10000 }
+    validates :website, :category_id, presence: true
     validates :name, uniqueness: true, presence: true
 
     scope :ordered_by_name, -> { order(name: :asc) }
-   
 end

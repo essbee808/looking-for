@@ -35,6 +35,7 @@ class ProgramsController < ApplicationController
 
       if @program.save
         redirect_to category_program_path(@program.category_id, @program)
+        
       else
         render :new
       end

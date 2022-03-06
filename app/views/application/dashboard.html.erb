@@ -5,6 +5,12 @@
     <h3>Welcome, <%= current_user.name %>!</h3>
 <% end %>
 
+<%= form_with url: '/search', method: :get, local: true do |f| %>
+  <%= f.label :q, "Search :" %>
+  <%= f.text_field :q, value: params[:q] %>
+  <%= f.submit 'Search', name: nil %>
+<% end %>
+
 <div class="card-group">
   <div class="card text-dark bg-light mb-0">
     <div class="card-body">

@@ -11,11 +11,10 @@ Rails.application.routes.draw do
     get 'login', to: 'devise/sessions#new'
     get 'signup', to: 'devise/registrations#new'
     get '/users/sign_out', to: 'devise/sessions#destroy'
+    get '/users/all_admin', to: 'devise#all_admin'
   end
 
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
-
-  post '/saved', to: 'user_programs#create'
 
   get '/bookmarks', to: 'user_programs#index'
   get '/about', to: 'application#about'
