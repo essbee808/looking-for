@@ -2,6 +2,25 @@
 <p>Help us grow and <%= link_to "add a program", new_program_path %><p>
 <br>
 <% @programs.ordered_by_name.each do |p| %>
-    <%= link_to p.name, program_path(p) %><br>
+    <li class="card"><%= link_to p.name, program_path(p) %><br>
     <br>
+    <div class="container mt-1">
+  <div class="row">
+    <div class="col">
+      <h1><strong><%= p.name %></strong></h1>
+      <br>
+        <br><br><br>
+        <div>
+          <h5>Description: </h5><p><%= p.description %></p>
+    </div>
+      
+    <div class="col">
+      <h4><strong>Next Steps:</strong></h4>
+      <br>
+      <p>Go to <%= link_to "program's website.", "#{p.website}", :target => "_blank" %></p>
+      <p>Call </p>
+    </div>
+  </div>
+  </li>
+    
 <% end %>

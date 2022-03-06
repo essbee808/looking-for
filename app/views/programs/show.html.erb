@@ -1,8 +1,9 @@
 <section>
-  <div class="container">
+ 
+  <div class="container mt-4">
   <div class="row">
     <div class="col">
-      <h2><%= @program.name %></h2>
+      <h1><strong><%= @program.name %></strong></h1>
       <br>
       <% if @program.creator_id == current_user.id %>
         <%= link_to 'Edit', edit_program_path(@program), method: :get %> or 
@@ -12,20 +13,31 @@
         <div>
           <h5>Description: </h5><p><%= @program.description %></p>
         </div>
-      <%= render partial: 'user_programs/form' %>
+        <br>
+        <br>
+        <%= render partial: 'user_programs/form' %>
     </div>
       
     <div class="col">
       <h4><strong>Next Steps:</strong></h4>
       <br>
+      
+      <br>
+      <br>
       <p>Go to <%= link_to "program's website.", "#{@program.website}", :target => "_blank" %></p>
       <p>Call </p>
+      <br>
+      
     </div>
   </div>
 </section>
 
 <%# Buttons %>
-
+<div class="result-action-bar action-bar">
+  <%= link_to 'Add A Program', new_category_program_path(@program.category) %><br>
+  <%= link_to 'View All Programs', programs_path %><br>
+  <%= link_to 'My Bookmarks', bookmarks_path, class: "rounded-pill" %>
+</div>
 
 <p>View other programs in: <%= link_to @program.category.name, category_path(@program.category) %></p>
 

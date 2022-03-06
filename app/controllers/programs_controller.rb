@@ -86,7 +86,7 @@ class ProgramsController < ApplicationController
     end
 
     def program_params
-      params.require(:program).permit(:name, :website, :description, :category_id, category_attributes: [:name])
+      params.require(:program).permit(:name, :organization, :website, :description, :category_id, category_attributes: [:name])
     end
 end
 
