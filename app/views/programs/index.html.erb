@@ -1,26 +1,22 @@
-<h3>All Programs</h3>
-<p>Help us grow and <%= link_to "add a program", new_program_path %><p>
-<br>
-<% @programs.ordered_by_name.each do |p| %>
-    <li class="card"><%= link_to p.name, program_path(p) %><br>
-    <br>
-    <div class="container mt-1">
-  <div class="row">
-    <div class="col">
-      <h1><strong><%= p.name %></strong></h1>
+<div class="col-6">
+  <div class="p-3">
+      <h1><strong>Programs</strong></h1>
+      <% @programs.each do |p| %>
+        <%= link_to p.name, category_program_path(p.category, p) %><br>
+      <% end %>
+     
+      <br><br>
+
+  <div class="col-6 pt-4">
+  <div class="p-4 border bg-light">
+      <h4><strong>I want to:</strong></h4>
       <br>
-        <br><br><br>
-        <div>
-          <h5>Description: </h5><p><%= p.description %></p>
-    </div>
-      
-    <div class="col">
-      <h4><strong>Next Steps:</strong></h4>
+      <%= link_to "Add a program", new_program_path %><br>
+      <%= link_to "View categories", categories_path %><br>
       <br>
-      <p>Go to <%= link_to "program's website.", "#{p.website}", :target => "_blank" %></p>
-      <p>Call </p>
-    </div>
+      <br>
   </div>
-  </li>
-    
-<% end %>
+</div>
+        
+  </div>
+</div>

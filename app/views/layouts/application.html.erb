@@ -17,9 +17,16 @@
         <%= render "layouts/navbar" %>
       <% end %>
     </header>
-
-      <div class="container-fluid">
+      <%= form_with url: '/search', method: :get, local: true, class: "form-control-lg" do |f| %>
+        <%= f.text_field :q, value: params[:q] %>
+        <%= f.submit 'Search', name: nil %>
+      <% end %>
+      <div class="container overflow-hidden">
+        <div class="row gy-5 fs-5">
+          
            <%= yield %>
+
+        </div>
       </div>
 
   </body>

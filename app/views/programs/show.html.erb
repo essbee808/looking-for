@@ -1,72 +1,46 @@
-<section>
- 
-  <div class="container mt-4">
-  <div class="row">
-    <div class="col">
+<div class="col-6">
+  <div class="p-3">
       <h1><strong><%= @program.name %></strong></h1>
+      <h5>By <strong><%= @program.organization %></strong></h5>
       <br>
-      <% if @program.creator_id == current_user.id %>
-        <%= link_to 'Edit', edit_program_path(@program), method: :get %> or 
-        <%= link_to 'Delete', program_path(@program), method: :delete %>
-      <% end %>
-        <br><br><br>
-        <div>
-          <h5>Description: </h5><p><%= @program.description %></p>
-        </div>
-        <br>
-        <br>
-        <%= render partial: 'user_programs/form' %>
-    </div>
-      
-    <div class="col">
+     
+      <br><br>
+  <div>
+      <h5>Description: </h5><p><%= @program.description %></p>
+  </div>
+        
+  </div>
+</div>
+
+<div class="col-6 pt-4">
+  <div class="p-4 border bg-light">
       <h4><strong>Next Steps:</strong></h4>
       <br>
-      
+      <%= render partial: 'user_programs/form' %>
       <br>
       <br>
       <p>Go to <%= link_to "program's website.", "#{@program.website}", :target => "_blank" %></p>
-      <p>Call </p>
-      <br>
-      
+  </div>
+</div>
+
+<div class="col-6">
+  <div class="p-3">
+    <div class="d-grid gap-1 d-md-flex justify-content-center">
+      <% if @program.creator_id == current_user.id %>
+        <%= button_to 'Edit', edit_program_path(@program), method: :get, class: "btn btn-primary me-md-2 btn-sm" %>
+        <%= button_to 'Delete', program_path(@program), method: :delete, class: "btn btn-danger me-md-2 btn-sm" %>
+      <% end %>
     </div>
   </div>
-</section>
-
-<%# Buttons %>
-<div class="result-action-bar action-bar">
-  <%= link_to 'Add A Program', new_category_program_path(@program.category) %><br>
-  <%= link_to 'View All Programs', programs_path %><br>
-  <%= link_to 'My Bookmarks', bookmarks_path, class: "rounded-pill" %>
 </div>
 
-<p>View other programs in: <%= link_to @program.category.name, category_path(@program.category) %></p>
-
-<br>
-<p><%= @program.description %></p>
-
-<p><%= link_to "Learn More", "#{@program.website}", :target => "_blank" %></p>
-<br>
-    
-<br>
-<%= link_to 'Add A Program', new_category_program_path(@program.category) %><br>
-<%= link_to 'View All Programs', programs_path %><br>
-<%= link_to 'My Bookmarks', bookmarks_path %>
-
-<div class="card w-75">
-  <div class="card-body">
-    <h5 class="card-title"><%= @program.name %></h5>
-         <% if @program.creator_id == current_user.id %>
-            <%= button_to 'Edit', edit_program_path(@program), method: :get %>
-            <%= button_to 'Delete', program_path(@program), method: :delete %> 
-        <% end %>
-    <br>
-    <p class="card-text"><%= @program.description %></p>
-    <%= link_to "Learn More", "#{@program.website}", :target => "_blank" %><br>
-    <br>
-    <%= render partial: 'user_programs/form' %>
+<div class="col-6">
+  <div class="p-3 border bg-light">
+      <h5>Something here</h5>
+        
   </div>
 </div>
 
+ 
 
-
-
+<%# Edit Delete links %>

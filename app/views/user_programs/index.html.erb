@@ -1,6 +1,5 @@
-<h3>My Bookmarks</h3>
+<h1>My Bookmarks</h1>
    <p>Browse all programs <%= link_to 'here', programs_path %></p>
-    <% @user_programs.each do |p| %>
-        <%= link_to p.program.name, category_program_path(p.program.category, p.program) %><br>
-    <% end %>
+   <%= render 'list' %>
+    
  

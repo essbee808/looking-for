@@ -9,6 +9,5 @@ class Program < ApplicationRecord
     validates :name, uniqueness: true, presence: true
 
     scope :ordered_by_name, -> { order(name: :asc) }
-
-
 end
+ 

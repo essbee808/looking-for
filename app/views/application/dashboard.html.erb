@@ -1,44 +1,40 @@
-<% if current_user.admin%>
-    <h3>Welcome, <%= current_user.name %>!</h3>
-    <h5>You are admin.</h5>
-<% else %>
-    <h3>Welcome, <%= current_user.name %>!</h3>
-<% end %>
-
-<%= form_with url: '/search', method: :get, local: true do |f| %>
-  <%= f.label :q, "Search :" %>
-  <%= f.text_field :q, value: params[:q] %>
-  <%= f.submit 'Search', name: nil %>
-<% end %>
-
-<div class="card-group">
-  <div class="card text-dark bg-light mb-0">
-    <div class="card-body">
-      <h5 class="card-title">My Bookmarks</h5>
-      <p class="card-text">View all saved bookmarks here.</p>
-      <%= link_to "View", bookmarks_path, class: "btn btn-primary" %>
+<div class="container">
+  <div class="row">
+  <%# profile %>
+    <div class="col-sm-8 border">
+        <h3>Welcome, <%= current_user.name %>!</h3>
+        <% if current_user.admin %>
+          <p>Role: Admin</p>
+        <% end %>
+      <br>
+      
+      <%= link_to "Edit Profile", edit_user_registration_path %>
+      <br>
+      <br>
     </div>
   
-  </div>
-  <div class="card text-white bg-dark mb-0">
-    <div class="card-body">
-      <h5 class="card-title">Categories</h5>
-      <p class="card-text">Categories found here.</p>
-      <%= link_to "View", categories_path, class: "btn btn-primary" %>
+  <%# Bookmarks %>
+    <div class="col-sm-4 border">
+      <h5>My Bookmarks</h5>
       <br>
-      <br>
-      <%= link_to "New Category", new_category_path if current_user.admin %>
+      <%= render 'user_programs/list' %>
     </div>
+  </div>
+  <div class="row">
+  <%# Links? %>
+    <div class="col-sm border">
+      <p><strong>Programs:</strong></p>
+      <%= link_to "Create", new_program_path %><br>
+      <%= link_to "View", programs_path %><br>
 
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Programs</h5>
-      <p class="card-text">List of programs</p>
-      <%= link_to "View", programs_path, class: "btn btn-primary" %>
-      <br>
-      <br>
-      <%= link_to "New Program", new_program_path if current_user.admin %>
     </div>
+    <div class="col-sm border">
+      <p><strong>Categories:</strong></p>
+      <%= link_to "View", programs_path %><br>
+    </div>
+    <div class="col-sm border">col-sm</div>
   </div>
 </div>
+
+  
+
