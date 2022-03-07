@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+
+  root to: "users/dashboard#show"
+
   namespace :users do
     get '/dashboard', to: 'dashboard#show'
     get '/created_programs', to: 'dashboard#created_programs'
+    get '/most_programs', to: 'dashboard#most_programs'
   end
-  root to: "application#dashboard"
+  
 
   devise_for :users, controllers: {
     registrations: 'users/registrations', 

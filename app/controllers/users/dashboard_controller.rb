@@ -4,4 +4,8 @@ class Users::DashboardController < ApplicationController
 
   def created_programs
   end
+
+  def most_programs 
+    @users = User.not_admin
+  end
 end

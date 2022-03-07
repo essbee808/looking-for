@@ -20,6 +20,7 @@
       <br>
       <br>
       <p>Go to <%= link_to "program's website.", "#{@program.website}", :target => "_blank" %></p>
+      <p>Browse other programs in: <%= link_to @program.category.name, category_path(@program.category) %></p>
   </div>
 </div>
 

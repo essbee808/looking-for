@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+<nav class="navbar navbar-expand-lg border navbar-light">
   <div class="container-fluid">
     <%= image_tag "logo.png", class: "navbar-brand", width:"100", height:"100" %> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
         </li>
    
         <li class="nav-item dropdown">
-          <%= link_to "Signed in as #{current_user.email}!", edit_user_registration_path, {:class => "nav-link dropdown-toggle", :id => "navbarDropdownMenuLink", 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' } %>
+          <%= link_to "Hi, #{current_user.name}", edit_user_registration_path, {:class => "nav-link dropdown-toggle", :id => "navbarDropdownMenuLink", 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' } %>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><%= link_to "Dashboard", root_path, class: "dropdown-item" %></li>
             <li><%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %></li>

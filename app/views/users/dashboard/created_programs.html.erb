@@ -1,2 +1,5 @@
-<h1>Users::Dashboard#created_programs</h1>
-<p>Find me in app/views/users/dashboard/index.html.erb</p>
+<h1>My Created Programs</h1>
+
+<% current_user.created_programs.most_recent.each do |p| %>
+    <p><%= link_to p.name, category_program_path(p.category, p) %> - <i>created on <%= p.format_date %></i> <p>
+<% end %>

@@ -9,5 +9,10 @@ class Program < ApplicationRecord
     validates :name, uniqueness: true, presence: true
 
     scope :ordered_by_name, -> { order(name: :asc) }
+    scope :most_recent, -> { order(created_at: :desc )}
+
+    def format_date
+        self.created_at.strftime("%b %d, %Y")
+    end
 end
  
