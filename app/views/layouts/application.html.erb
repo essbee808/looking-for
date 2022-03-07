@@ -15,12 +15,15 @@
     <header>
       <% if user_signed_in? %>
         <%= render "layouts/navbar" %>
-      <% end %>
-    </header>
-      <%= form_with url: '/search', method: :get, local: true, class: "form-control-lg" do |f| %>
+        <br>
+        <%= form_with url: '/search', method: :get, local: true, class: "form-control-lg" do |f| %>
         <%= f.text_field :q, value: params[:q] %>
         <%= f.submit 'Search', name: nil %>
       <% end %>
+      <% end %>
+      <br>
+      <br>
+    </header>
       <div class="container overflow-hidden">
         <div class="row gy-5 fs-5">
           

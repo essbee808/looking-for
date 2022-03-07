@@ -10,9 +10,6 @@ class ApplicationController < ActionController::Base
     def about
     end
 
-    def dashboard
-    end
-
     protected
 
     def configure_permitted_params
