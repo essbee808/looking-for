@@ -7,8 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if User.where(email: "love.to.code.17@gmail.com").blank?
-    User.create!(email: "love.to.code.17@gmail.com", password: "superpassword", name: "SuperAdmin", admin: true)
+    User.create!(email: "love.to.code.17@gmail.com", password: "superadminpw", name: "SuperAdmin", admin: true)
 end
+
+User.create(name: "Test User", email: "testuser@gmail.com", password: "testuserpw")
+User.create(name: "Meeko The Great", email: "meeko@gmail.com", password: "meekopw")
+
 
 Category.create(name: "Money")
 Category.create(name: "Education")
@@ -48,4 +52,18 @@ Program.create(name: "ACCESS", website: "https://accessla.org/",
     Access operates on the same schedule as most buses. Regular service is offered from 4:00 AM to 12:00 AM, 7 days a week. Limited service is available from 12:00 AM to 4:00 AM.
     As a shared ride service your travel time will be similar to that of a fixed-route bus, not a car or taxi.
     Your one-way fare is based on the distance you travel with a maximum fare of $3.50 (except to/from and in Antelope and Santa Clarita Valleys).",
-    organization: "Access Services", category_id: 8, creator_id: 1)
+    organization: "Access Services", category_id: 8, creator_id: 2)
+Program.create(name: "Lifeline - Utility Users Tax Exemption for Seniors and Individuals with Disabilities", website: "https://accessla.org/", 
+    description: "The Utility User's Tax Exemption / Electric & Water Lifeline Rate Application Program was developed to offer senior and disabled citizens an exemption from their electric and other utility bills.  To qualify, you must be a user of utilities at a residential address within the City of Los Angeles and be responsible for the payment of utility bills under your name.",
+    organization: "State of California", category_id: 1, creator_id: 2)
+Program.create(name: "Scooter Rental", website: "https://scootaround.com/en/mobility-scooter-rentals", 
+    description: "Scootaround is the nation’s leading personal transportation solutions company, offering rental, sales, and repair services for scooters, wheelchairs, powerchairs, and rollators at over 2,500 locations across North America and Europe.
+    Customers can arrange worry-free rentals 7 days a week toll-free at 1-888-441-7575 or you can book online 24/7 at scootaround.com. Scootaround has developed a network of associates throughout North America to meet your most diverse travel needs, from conventions and business travel to vacations and cruises.",
+    organization: "Scootaround", category_id: 8, creator_id: 2)
+Program.create(name: "Free COVID-19 At Home Tests Available!", website: "https://picturegenetics.com/covid19/", 
+    description: "If you're concerned about coronavirus symptoms or exposure, Picture offers a simple diagnostic test you can take from home.
+
+    Reduce your risk of exposure at the doctor's office and know that your results will be fast and reliable.",
+    organization: "Fulgent Genetics", category_id: 5, creator_id: 2)
+
+    
