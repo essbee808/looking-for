@@ -25,15 +25,14 @@
 </div>
 
 <div class="col-6">
-  <div class="p-3">
-    <div class="d-grid gap-1 d-md-flex justify-content-center">
-      <% if @program.creator_id == current_user.id %>
-        <%= button_to 'Edit', edit_program_path(@program), method: :get, class: "btn btn-primary me-md-2 btn-sm" %>
-        <%= button_to 'Delete', program_path(@program), method: :delete, class: "btn btn-danger me-md-2 btn-sm" %>
+  <div class="p-2">
+       <% if @program.creator_id == current_user.id %>
+        <%= link_to 'Edit', edit_program_path(@program), method: :get %>
+        <%= link_to 'Delete', program_path(@program), method: :delete %>
       <% end %>
-    </div>
   </div>
 </div>
+
 
 <div class="col-6">
   <div class="p-3 border bg-light">

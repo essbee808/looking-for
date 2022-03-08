@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :authenticate_user!
-    before_action :set_admin, only: [:dashboard]
+    before_action :set_admin, only: [:home]
 
     before_action :configure_permitted_params, if: :devise_controller?
 
@@ -25,4 +25,9 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation])
     end
 
+    def set_admin
+        if current_user.email.match(/factfamily.org/)
+            current_user.admin = true
+        end
+    end  
 end

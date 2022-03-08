@@ -1,5 +1,26 @@
 <h1>My Created Programs</h1>
-
-<% current_user.created_programs.most_recent.each do |p| %>
-    <p><%= link_to p.name, category_program_path(p.category, p) %> - <i>created on <%= p.format_date %></i> <p>
+<p> Help us grow and <%= link_to "add a program", new_program_path %><p>
+<% if !current_user.created_programs.empty? %>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Last Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% current_user.created_programs.most_recent.each_with_index do |p, index| %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= p.name %></td>
+                <td><%= p.category.name %></td>
+                <td><%= p.format_update %></td>
+                <td><%= link_to "Edit", edit_program_path(p) %></td>
+                <td><%= link_to "Delete", program_path(p), method: :delete %></td>
+            </tr>
+        <% end %>             
+    </tbody>
+</table>
 <% end %>

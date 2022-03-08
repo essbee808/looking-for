@@ -55,6 +55,7 @@ class ProgramsController < ApplicationController
     end
 
     def destroy
+      binding.pry
       @program.destroy!
       redirect_to programs_path
     end
@@ -62,7 +63,7 @@ class ProgramsController < ApplicationController
     private
 
     def verify_creator
-      if current_user.id != @program.creactor_id
+      if current_user.id != @program.creator_id
         redirect_to programs_path
       end
     end
