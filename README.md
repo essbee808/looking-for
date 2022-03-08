@@ -1,24 +1,23 @@
-# README
+# Welcome to Looking For
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Looking For is a social care platform designed to connect people with community resources. Users can search for desired programs and/or categories and bookmark favorite programs. Users can also actively contribute by adding programs to the database. 
 
-Things you may want to cover:
+User registrations and sessions were created with Devise, third-party provider with Omniauth, and Bootstrap 5 for styling.
 
-* Ruby version
+# Installation #
 
-* System dependencies
+* Clone this repo
 
-* Configuration
+* Run bundle
 
-* Database creation
+* Run rails s
 
-* Database initialization
+* Open browser
 
-* How to run the test suite
+* Go to localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
+# Contributing #
+Bug reports and pull requests are welcome on Github at https://github.com/essbee808/looking-for
 
-* Deployment instructions
-
-* ...
+# License #
+The project is available as open source under the terms of the MIT License
