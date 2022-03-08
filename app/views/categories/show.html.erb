@@ -5,12 +5,15 @@
         <%= button_to 'Delete', category_path(@category), method: :delete %><br>
     <% end %>
     <br>
-
-    <br>
     <h4><%= pluralize(@programs.count, 'program') %> found:</h4>
-      <% @programs.ordered_by_name.each do |p| %>
-        <%= link_to p.name, category_program_path(@category, p) %><br>
+        <% @programs.ordered_by_name.each do |p| %>
+        <li><%= link_to p.name, category_program_path(@category, p) %></li><br>
     <% end %>
 <br>
 
-
+<div class="col-6">
+  <div class="p-3 border bg-light">
+      <%= link_to "Add a program", new_category_program_path(@category) %><br>
+      <%= link_to "Back to categories", categories_path %>
+  </div>
+  

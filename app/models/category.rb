@@ -5,7 +5,4 @@ class Category < ApplicationRecord
     validates :name, presence: true, uniqueness: true
     scope :ordered_by_name, -> { order(name: :asc)}
    
-    def self.search(query)
-        where("name LIKE ?", "%#{query}%")
-    end
 end

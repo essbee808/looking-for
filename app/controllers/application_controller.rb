@@ -12,8 +12,9 @@ class ApplicationController < ActionController::Base
 
     def home
         if params[:query]
-            @categories = Category.search(params[:query])
-            @programs = Program.search(params[:query])
+            @parameter = params[:query].downcase
+            @programs = Program.all.where("lower(name) LIKE ?", "%#{@parameter}%")
+            @categories = Category.all.where("lower(name) LIKE ?", "%#{@parameter}%")
         end
     end
 

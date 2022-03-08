@@ -15,8 +15,5 @@ class Program < ApplicationRecord
         self.created_at.strftime("%b %d, %Y")
     end
 
-    def self.search(query)
-        where("name LIKE ?", "%#{query}")
-    end
 end
  
