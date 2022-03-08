@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
     def about
     end
 
+    def home
+        if params[:query]
+            @categories = Category.search(params[:query])
+            @programs = Program.search(params[:query])
+        end
+    end
+
     protected
 
     def configure_permitted_params

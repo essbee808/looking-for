@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+  <%# profile %>
+    <div class="col-sm-8">
+        <h2>What are you looking for, <%= current_user.name %>?</h2>
+        <br>
+        <%= form_with url: '/search', method: :get, local: true, class: "form-control-lg" do |f| %>
+          <%= f.text_field :query, value: params[:query] %>
+          <%= f.submit 'Search', name: nil %>
+        <% end %>
+        <br>
+          <% if @programs && !@programs.empty?%>
+            <h5> Program(s) that fit your search: </h5>
+            <%= render partial: 'programs/list', locals: { programs: @programs } %>
+          <% end %>
+          
+          <% if @categories && !@categories.empty?%>
+            <h5> Categories that fit your search: </h5>
+            <%= render partial: 'categories/list', locals: { categories: @categories } %>
+          <% end %>
+      <br><br><br><br><br><br><br>
+    </div>
+
+  <%# Bookmarks %>
+    <div class="col-sm-4">
+      <%= image_tag "cat-and-dog.png", class: "img-fluid" %> 
+      <br>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+  <%# Links? %>
+    <div class="col-sm border border-2 border-dark">
+      <center><h4>What do you want to do?</h4></center>
+      <h5>Programs</h5>
+        <%= link_to "Create A Program", new_program_path %><br>
+        <%= link_to "View All Programs", programs_path %><br>
+        <%= link_to "My Created Programs", users_created_programs_path %>
+        <br>
+        <br>
+      <h5>Categories</h5>
+        <%= link_to "Create A Category", new_category_path if current_user.admin %><br>
+        <%= link_to "View All Categories", categories_path %><br>
+        <br>
+        <br>
+    </div>
+    <div class="col-sm border border-2 border-dark">
+       <center><h4>Bookmark List</h4></center>
+      <%= render 'user_programs/list' %>
+      <br>
+      <br>
+    </div>
+    
+  </div>
+</div>

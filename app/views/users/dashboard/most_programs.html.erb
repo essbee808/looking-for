@@ -10,12 +10,12 @@
         </tr>
     </thead>
     <tbody>
-        <% @users.each_with_index do |u, index| %>
+        <% @users.reverse.each_with_index do |u, index| %>
             <tr>
                 <td><%= index + 1 %></td>
                 <td><%= u.name %></td>
                 <td><%= u.email %></td>
-                <td><%= u.created_programs.count %></td>
+                <td><%= u.total_programs %></td>
             </tr>
         <% end %>             
     </tbody>

@@ -16,10 +16,6 @@
       <% if user_signed_in? %>
         <%= render "layouts/navbar" %>
         <br>
-        <%= form_with url: '/search', method: :get, local: true, class: "form-control-lg" do |f| %>
-        <%= f.text_field :q, value: params[:q] %>
-        <%= f.submit 'Search', name: nil %>
-      <% end %>
       <% end %>
       <br>
       <br>

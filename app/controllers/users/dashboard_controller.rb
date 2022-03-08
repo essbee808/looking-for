@@ -1,11 +1,8 @@
 class Users::DashboardController < ApplicationController
-  def show
-  end
-
   def created_programs
   end
 
   def most_programs 
-    @users = User.not_admin
+    @users = User.non_admin.sort_by{|user| user.total_programs }
   end
 end

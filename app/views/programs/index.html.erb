@@ -1,9 +1,7 @@
 <div class="col-6">
   <div class="p-3">
       <h1><strong>Programs</strong></h1>
-      <% @programs.each do |p| %>
-        <%= link_to p.name, category_program_path(p.category, p) %><br>
-      <% end %>
+      <%= render partial: 'list', locals: { programs: @programs } %>
      
       <br><br>
 

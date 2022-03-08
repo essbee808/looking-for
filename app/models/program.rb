@@ -14,5 +14,9 @@ class Program < ApplicationRecord
     def format_date
         self.created_at.strftime("%b %d, %Y")
     end
+
+    def self.search(query)
+        where("name LIKE ?", "%#{query}")
+    end
 end
  

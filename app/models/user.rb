@@ -8,10 +8,18 @@ class User < ApplicationRecord
   has_many :user_programs
   has_many :programs, through: :user_programs
 
-  scope :not_admin, -> { where(admin: false ) }
-  scope :most_created_programs, -> { order(created_programs)}
-  
+  scope :non_admin, -> { where(admin: false ) }
+  scope :get_name_and_email, -> { select(:id, :name, :email)}
 
+  def total_programs
+    self.created_programs.count
+    # sort array of users by the number of programs they created
+  end 
+
+  def sort_by_total_programs(array)
+    array.sort_by{|a| a.total_programs }
+  end
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
