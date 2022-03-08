@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     get '/created_programs', to: 'dashboard#created_programs'
-    get '/most_programs', to: 'dashboard#most_programs'
+    get '/top_creators', to: 'dashboard#top_creators'
   end
 
   devise_for :users, controllers: {
@@ -21,11 +21,10 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
 
-  get '/bookmarks', to: 'user_programs#index'
   get '/about', to: 'application#about'
   get '/search', to: 'application#home'
   
-  resources :user_programs
+  resources :bookmarks
   resources :programs
 
   resources :categories do

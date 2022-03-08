@@ -18,6 +18,10 @@
         <li class="nav-item <%= active_class(programs_path)%>">
           <%= link_to "Programs", programs_path, class: "nav-link" %>
         </li>
+
+        <li class="nav-item <%= active_class(users_top_creators_path)%>">
+          <%= link_to "Top Creators", users_top_creators_path, class: "nav-link" %>
+        </li>
    
         <li class="nav-item dropdown">
           <%= link_to "Hi, #{current_user.name}", edit_user_registration_path, {:class => "nav-link dropdown-toggle", :id => "navbarDropdownMenuLink", 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' } %>

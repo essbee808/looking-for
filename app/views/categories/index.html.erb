@@ -1,8 +1,10 @@
 <div class="col-6">
   <div class="p-3">
       <h1><strong>Categories</strong></h1>
+      <br>
       <%= render partial: 'list', locals: { categories: @categories } %>
       <br><br>
+        <%= link_to "Add a category", new_category_path if current_user.admin %><br>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
 <div class="col-6">
   <div class="p-3">
-      <h2><strong><%= @program.name %></strong></h2>
+      <h1><strong><%= @program.name %></strong></h1>
       <h5>By <strong><%= @program.organization %></strong></h5>
       <br>
      
@@ -16,7 +16,7 @@
   <div class="p-4 border bg-light">
       <h4><strong>Next Steps:</strong></h4>
       <br>
-      <%= render partial: 'user_programs/form' %>
+      <%= render partial: 'bookmarks/form', locals: { bookmark: @bookmark } %>
       <br>
       <br>
       <p>Go to <%= link_to "program's website.", "#{@program.website}", :target => "_blank" %></p>
@@ -37,11 +37,7 @@
 
 <div class="col-6">
   <div class="p-3 border bg-light">
-      <%= render 'layouts/links' %>
+      <%= render partial: 'layouts/links' %>
   </div>
 </div>
   
-
- 
-
-<%# Edit Delete links %>

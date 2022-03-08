@@ -1,5 +1,5 @@
-<h2><%= @category.name %></h2>
-<p>Help us grow and <%= link_to 'add a program', new_category_program_path(@category) %></p>
+<h1><strong><%= @category.name %></strong></h1>
+
     <% if current_user.admin %>
         <%= button_to 'Edit', edit_category_path(@category), method: :get %><br>
         <%= button_to 'Delete', category_path(@category), method: :delete %><br>

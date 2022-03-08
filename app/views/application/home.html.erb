@@ -24,9 +24,8 @@
             <h5> No categories or programs fit your search.</h5>
             <p>You can:</p>
             <li>Search for something else</li>
-            <li><%= link_to "View all categories", categories_path %></li>
-            <li><%= link_to "View all programs", programs_path %></li>
-
+            <li>View <%= link_to "categories", categories_path %> or <%= link_to "programs", programs_path %></li>
+            <li>Help us grow and <%= link_to "add a program", new_program_path %></li>
 
           <% end %>
       <br><br><br><br><br><br><br>
@@ -46,6 +45,8 @@
     </div>
     <div class="col-sm-4 border border-2 border-dark">
       <center><h2>I want to:</h2>
+        <%= link_to "View my bookmarks", bookmarks_path %><br>
+
         <%= link_to "Add A Program", new_program_path %><br>
         <%= link_to "View Created Programs", users_created_programs_path %><br>
         <%= link_to "View All Programs", programs_path %><br>

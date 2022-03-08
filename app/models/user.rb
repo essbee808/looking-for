@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2, :facebook]
 
   has_many :created_programs, foreign_key: "creator_id", class_name: "Program"
-  has_many :user_programs
+  has_many :bookmarks
   has_many :programs, through: :user_programs
 
   scope :non_admin, -> { where(admin: false ) }

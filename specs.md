@@ -7,15 +7,15 @@ Specs:
 
 - [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User) - Program belongs_to a category
 
-- [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients) - User has_many programs through user_programs and vice versa
+- [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients) - User has_many programs through bookmarks and vice versa
 
 - [x] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients) - Program has_many users, user has_many programs
 
-- [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity) 
+- [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity) - Bookmarks have a datetime attribute that is submitted by user
 
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item) - Program validates presence of name, website, category_id, organization. It validates uniqueness and checks that the description field has between 50 to 10,000 characters. Category validates presence and uniqueness of name. 
 
-- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) - Scope method is most_created_programs found at /users/most_created_programs 
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) - Scope method is top_creators found at /users/top_creators that displays a table with users who add the most programs to the dB.
 
 - [x] Include signup - Devise generated user model and signup routes
 - [x] Include login - Generated with Devise

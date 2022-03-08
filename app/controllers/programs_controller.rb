@@ -9,7 +9,7 @@ class ProgramsController < ApplicationController
         set_category
         @programs = @category.programs
       else
-        @programs = Program.all
+        @programs = Program.all.ordered_by_name
       end
     end
 
@@ -42,9 +42,8 @@ class ProgramsController < ApplicationController
     end
 
     def show
-      find_bookmark
       set_category
-    
+      find_bookmark
     end
 
     def edit
@@ -63,7 +62,7 @@ class ProgramsController < ApplicationController
     private
 
     def verify_creator
-      if current_user.id != @program.creator_id
+      if current_user.id != @program.creactor_id
         redirect_to programs_path
       end
     end
@@ -76,9 +75,9 @@ class ProgramsController < ApplicationController
       @program = Program.find_by_id(params[:id])
     end
 
-
     def find_bookmark
-      @user_program = current_user.user_programs.find_by(program_id: params[:id])
+      @bookmark = current_user.bookmarks.find_by(program_id: params[:id])
+
     end
 
     def is_invalid

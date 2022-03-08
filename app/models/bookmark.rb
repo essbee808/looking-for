@@ -1,4 +1,4 @@
-class UserProgram < ApplicationRecord
+class Bookmark < ApplicationRecord
   belongs_to :user
   belongs_to :program
 end
