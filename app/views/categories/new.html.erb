@@ -13,9 +13,4 @@
     </div>
 <% end %>
 
-<%= form_with model: @category do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-    <br>
-    <%= f.submit 'Create' %> 
-<% end %> 
+<%= render 'form' %>

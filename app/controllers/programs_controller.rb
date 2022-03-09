@@ -25,7 +25,7 @@ class ProgramsController < ApplicationController
 
     def create
       if params[:category_id]
-        @category = Category.find_by(params[:category_id])
+        @category = Category.find_by(id: params[:category_id])
         @program = @category.programs.build(program_params)
       else
         @program = Program.new(program_params)
@@ -84,7 +84,7 @@ class ProgramsController < ApplicationController
     end
 
     def program_params
-      params.require(:program).permit(:name, :organization, :website, :description, :category_id, category_attributes: [:name])
+      params.require(:program).permit(:name, :organization, :website, :description, :category_id)
     end
 end
 

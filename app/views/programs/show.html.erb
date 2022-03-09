@@ -16,7 +16,7 @@
   <div class="p-4 border bg-light">
       <h4><strong>Next Steps:</strong></h4>
       <br>
-      <%= render partial: 'bookmarks/form', locals: { bookmark: @bookmark } %>
+      <%= render partial: 'bookmarks/form', locals: { bookmark: @bookmark, program: @program } %>
       <br>
       <br>
       <p>Go to <%= link_to "program's website.", "#{@program.website}", :target => "_blank" %></p>

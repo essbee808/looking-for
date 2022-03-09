@@ -23,12 +23,14 @@ Rails.application.routes.draw do
 
   get '/about', to: 'application#about'
   get '/search', to: 'application#home'
+
+  post '/programs/:id/edit', to: 'programs#edit'
   
   resources :bookmarks
   resources :programs
 
   resources :categories do
-    resources :programs, only: [:index, :new, :create, :show]
+    resources :programs
   end
   
 end
