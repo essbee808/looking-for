@@ -17,7 +17,7 @@
                 <td><%= p.name %></td>
                 <td><%= p.category.name %></td>
                 <td><%= p.format_update %></td>
-                <td><%= link_to "Edit", edit_program_path(p) %></td>
+                <td><%= link_to "Edit", edit_program_path(p), method: :edit %></td>
                 <td><%= link_to "Delete", program_path(p), method: :delete %></td>
             </tr>
         <% end %>             

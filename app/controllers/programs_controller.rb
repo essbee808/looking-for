@@ -55,7 +55,6 @@ class ProgramsController < ApplicationController
     end
 
     def destroy
-      binding.pry
       @program.destroy!
       redirect_to programs_path
     end
