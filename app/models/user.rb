@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :bookmarks
   has_many :programs, through: :user_programs
 
+  validates :name, presence: true
+
   scope :non_admin, -> { where(admin: false ) }
   scope :get_name_and_email, -> { select(:id, :name, :email)}
 
