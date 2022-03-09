@@ -2,10 +2,7 @@ Rails.application.routes.draw do
 
   root to: "application#home"
 
-  namespace :users do
-    get '/created_programs', to: 'dashboard#created_programs'
-    get '/top_creators', to: 'dashboard#top_creators'
-  end
+  get '/users/top_creators', to: 'users#top_creators'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations', 
@@ -28,6 +25,10 @@ Rails.application.routes.draw do
   
   resources :bookmarks
   resources :programs
+
+  resources :users do
+    resources :programs
+  end
 
   resources :categories do
     resources :programs

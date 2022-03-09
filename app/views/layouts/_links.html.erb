@@ -1,7 +1,7 @@
 
      <center><h2>I want to:</h2>
         <%= link_to "Add a program", new_program_path %><br>
-        <%= link_to "View created programs", users_created_programs_path %><br>
+        <%= link_to "View created programs", user_programs_path(current_user.id) %><br>
         <%= link_to "View all programs", programs_path %><br>
         <br>
         <%= link_to "Create a category", new_category_path if current_user.admin %><br>

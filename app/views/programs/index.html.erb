@@ -1,10 +1,11 @@
 <div class="col-6">
   <div class="p-3">
-      <h1><strong>Programs</strong></h1>
-      <br>
-      <%= render partial: 'list', locals: { programs: @programs } %>
-     
+    <% if params[:user_id] %>
+      <%= render 'created_list', collection: @programs %>
+    <% else %>
+      <%= render 'list', collection: @programs %>
       <br><br>
+    <% end %>
 
   <div class="col-6 pt-4">
   <div class="p-4 border bg-light">

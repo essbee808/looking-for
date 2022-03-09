@@ -6,16 +6,18 @@ class User < ApplicationRecord
 
   has_many :created_programs, foreign_key: "creator_id", class_name: "Program"
   has_many :bookmarks
-  has_many :programs, through: :user_programs
+  has_many :programs, through: :bookmarks
 
   validates :name, presence: true
 
   scope :non_admin, -> { where(admin: false ) }
   scope :get_name_and_email, -> { select(:id, :name, :email)}
+  scope :program_count, ->(){ }
+  
 
   def total_programs
     self.created_programs.count
-    # sort array of users by the number of programs they created
+    # returns integer
   end 
 
   def sort_by_total_programs(array)

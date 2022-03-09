@@ -31,6 +31,7 @@
          <% end %> 
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><%= link_to "Dashboard", root_path, class: "dropdown-item" %></li>
+            <li><%= link_to "My Programs", user_programs_path(current_user.id), class: "dropdown-item" %></li>
             <li><%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, class: "dropdown-item" %></li>
           </ul>

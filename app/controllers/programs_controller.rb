@@ -8,6 +8,8 @@ class ProgramsController < ApplicationController
       if params[:category_id]
         set_category
         @programs = @category.programs
+      elsif params[:user_id]
+        @programs = Program.where(creator_id: current_user.id)
       else
         @programs = Program.all.ordered_by_name
       end
