@@ -12,8 +12,6 @@ class User < ApplicationRecord
 
   scope :non_admin, -> { where(admin: false ) }
   scope :get_name_and_email, -> { select(:id, :name, :email)}
-  #scopt :most_programs, ->( order())
-  scope :first_five, -> { limit(5)}
 
   def total_programs
     self.created_programs.count

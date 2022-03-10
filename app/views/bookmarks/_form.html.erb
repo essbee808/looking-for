@@ -4,8 +4,8 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "Save" %>
     <% end %>
-    <p><i>Click to save.</i></p>
+    <p>Save me to your <%= link_to 'bookmarks', bookmarks_path %></p>
 <% else %>
     <%= button_to "Remove", bookmark_path(bookmark.id), method: :delete %>
-    <p><i>Saved to <%= link_to 'bookmarks', bookmarks_path %>!</i></p>
+    <p><i>Added to <%= link_to 'bookmarks', bookmarks_path %>!</i></p>
 <% end %>

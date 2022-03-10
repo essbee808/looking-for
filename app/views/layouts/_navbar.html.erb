@@ -11,18 +11,30 @@
           <%= link_to "About", about_path, class: "nav-link" %>
         </li>
 
-        <li class="nav-item <%= active_class(categories_path)%>">
-          <%= link_to "Categories", categories_path, class: "nav-link" %> 
+        <li class="nav-item dropdown">
+            <%= link_to "Categories", categories_path, {:class => "nav-link dropdown-toggle", :id => "navbarDropdownMenuLink", 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' } %>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">            
+            <li><%= link_to "New Category", new_category_path, class: "dropdown-item" if current_user.admin %> </li>
+            <li><%= link_to "All Categories", categories_path, class: "dropdown-item" %></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item dropdown">
+            <%= link_to "Programs", programs_path, {:class => "nav-link dropdown-toggle", :id => "navbarDropdownMenuLink", 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' } %>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">  
+  
+            <li><%= link_to "New Program", new_program_path, class: "dropdown-item" %></li>
+            <li><%= link_to "My Programs", user_programs_path(current_user.id), class: "dropdown-item" %></li>
+            <li><%= link_to "All Programs", programs_path, class: "dropdown-item" %></li>
+          </ul>
         </li>
 
-        <li class="nav-item <%= active_class(programs_path)%>">
-          <%= link_to "Programs", programs_path, class: "nav-link" %>
-        </li>
 
-        <li class="nav-item <%= active_class(users_top_creators_path)%>">
+         <li class="nav-item <%= active_class(users_top_creators_path)%>">
           <%= link_to "Top Creators", users_top_creators_path, class: "nav-link" %>
         </li>
-   
+
+
         <li class="nav-item dropdown">
           <% if current_user.admin %>
             <%= link_to "Admin | #{current_user.name}", edit_user_registration_path, {:class => "nav-link dropdown-toggle", :id => "navbarDropdownMenuLink", 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' } %>
