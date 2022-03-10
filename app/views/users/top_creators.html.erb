@@ -8,13 +8,11 @@
         </tr>
     </thead>
     <tbody>
-      <% binding.pry %>
-        <% @users.reverse.each_with_index do |u, index| %>
-    
+        <% @sorted.reverse.each_with_index do |u, index| %>
             <tr>
-                <td><%# index + 1 %></td>
-                <td><%# u.name %></td>
-                <td><%# u.total_programs %></td>
+                <td><%= index + 1 %></td>
+                <td><%= u.name %></td>
+                <td><%= u.total_programs %></td>
             </tr>
         <% end %>             
     </tbody>

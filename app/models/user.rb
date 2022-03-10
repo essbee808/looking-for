@@ -12,18 +12,14 @@ class User < ApplicationRecord
 
   scope :non_admin, -> { where(admin: false ) }
   scope :get_name_and_email, -> { select(:id, :name, :email)}
-  scope :program_count, ->(){ }
-  
+  #scopt :most_programs, ->( order())
+  scope :first_five, -> { limit(5)}
 
   def total_programs
     self.created_programs.count
     # returns integer
   end 
 
-  def sort_by_total_programs(array)
-    array.sort_by{|a| a.total_programs }
-  end
-  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
