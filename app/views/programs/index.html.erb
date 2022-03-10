@@ -1,8 +1,10 @@
 <div class="col-6">
   <div class="p-3">
     <% if params[:user_id] %>
+      <h1><strong>My Programs</strong></h1>
       <%= render 'created_list', collection: @programs %>
     <% else %>
+      <h1><strong>All Programs</strong></h1>
       <%= render 'list', collection: @programs %>
       <br><br>
     <% end %>
