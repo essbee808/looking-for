@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @programs = @category.programs.ordered_by_name
+    @programs = @category.programs.ordered_asc
   end
 
   def edit

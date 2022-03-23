@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
   <%# profile %>
-    <div class="col-sm-8 bordet">
+    <div class="col-sm-8">
         <h1>What are you looking for, <%= current_user.name %>?</h1>
         <br>
         <%= form_with url: '/search', method: :get, local: true, class: "form-control-lg" do |f| %>
@@ -9,7 +9,6 @@
           <%= f.submit 'Search', name: nil %>
         <% end %>
         <br>
-
           <% if @programs && !@programs.empty? %>
             <h5><%= pluralize(@programs.count, 'program') %> found:</h5>
               <%= render partial: 'programs/list' %>

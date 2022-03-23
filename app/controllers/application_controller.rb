@@ -25,9 +25,4 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation])
     end
 
-    def set_admin
-        if current_user.email.match(/factfamily.org/)
-            current_user.admin = true
-        end
-    end  
 end

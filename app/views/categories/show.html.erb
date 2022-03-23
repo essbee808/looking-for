@@ -6,7 +6,7 @@
     <% end %>
     <br>
     <h4><%= pluralize(@programs.count, 'program') %> found:</h4>
-        <% @programs.ordered_by_name.each do |p| %>
+        <% @programs.ordered_asc.each do |p| %>
         <li><%= link_to p.name, category_program_path(@category, p) %></li>
     <% end %>
 <br>

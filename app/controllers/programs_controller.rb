@@ -11,8 +11,12 @@ class ProgramsController < ApplicationController
       elsif params[:user_id]
         @programs = current_user.created_programs
       else
-        @programs = Program.all.ordered_by_name
+        @programs = Program.ordered_asc
       end
+    end
+
+    def z_to_a
+      @programs_desc = Program.ordered_desc
     end
 
     def new
@@ -37,7 +41,6 @@ class ProgramsController < ApplicationController
 
       if @program.save
         redirect_to category_program_path(@program.category_id, @program)
-        
       else
         render :new
       end

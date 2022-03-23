@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "application#home"
 
   get '/users/top_creators', to: 'users#top_creators'
-
+ 
   devise_for :users, controllers: {
     registrations: 'users/registrations', 
     sessions: 'users/sessions',
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/search', to: 'application#home'
 
   post '/programs/:id/edit', to: 'programs#edit'
+  get '/z_to_a', to: 'programs#z_to_a'
   
   resources :bookmarks
   resources :programs
