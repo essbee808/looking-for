@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2022_03_08_064914) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "program_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "program_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "date_saved"

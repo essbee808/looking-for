@@ -1,6 +1,5 @@
 <div class="col-6">
   <div class="p-3">
-   <%= link_to 'Z to A', z_to_a_path %>
     <% if params[:user_id] %>
       <h1><strong>My Programs</strong></h1>
       <%= render 'created_list', collection: @programs_asc %>
@@ -10,16 +9,5 @@
       <br><br>
     <% end %>
 
-  <div class="col-6 pt-4">
-  <div class="p-4 border bg-light">
-      <h4><strong>I want to:</strong></h4>
-      <br>
-      <%= link_to "Add a program", new_program_path %><br>
-      <%= link_to "View categories", categories_path %><br>
-      <br>
-      <br>
-  </div>
-</div>
-        
   </div>
 </div>
