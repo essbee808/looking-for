@@ -19,10 +19,9 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
 
   get '/about', to: 'application#about'
-  get '/search', to: 'application#home'
+  get '/', to: 'application#home'
 
   post '/programs/:id/edit', to: 'programs#edit'
-  get '/z_to_a', to: 'programs#z_to_a'
   
   resources :bookmarks
   resources :programs
