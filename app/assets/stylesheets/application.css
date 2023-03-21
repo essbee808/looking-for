@@ -14,7 +14,7 @@
  *= require_self
  */
 
-/* li {
+li {
     list-style-type: none;
 }
 
@@ -38,4 +38,4 @@ a:hover {
 a:active {
     outline: 2px solid rgb(76, 76, 207);
     text-decoration: none;
-} */
+}
