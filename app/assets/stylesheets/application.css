@@ -14,3 +14,28 @@
  *= require_self
  */
 
+li {
+    list-style-type: none;
+}
+
+a:focus {
+    outline: 3px solid rgb(76, 76, 207);
+}
+
+a {
+    padding: 10px;
+    width: 130px;
+    height: 100px;
+    margin: 0 auto;
+    transition: all .3s ease-in-out;
+}
+
+a:hover {
+    outline: 3px solid rgb(76, 76, 207);
+    text-decoration: none;
+}
+
+a:active {
+    outline: 2px solid rgb(76, 76, 207);
+    text-decoration: none;
+}
